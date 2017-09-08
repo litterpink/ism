@@ -1,0 +1,105 @@
+﻿<!-- cy更改 -->
+<setpagetitlerow thetitle="基本信息"></setpagetitlerow>
+<div class="flex-v right-content" ng-show="getData">
+	<div class="right-sumbg">
+  <div class="title marginbot20">
+  	<span class="information-span">公司信息</span>
+  	 <button type="button" class="btn btn-default fr margin-right36" ng-click="clickedInformation()" ng-hide = "isDisabled.distrue">
+  		<span class="glyphicon glyphicon-pencil"></span>&nbsp;编辑
+	</button>
+  	 
+  </div>
+  <form class="company-information" id="companyInformation" novalidate name="myForm">
+  	<fieldset ng-disabled="isDisabled.disfalse">
+  	<div class="col-lg-6 baseInputHeigh">
+    	<label class="col-lg-12"><em class="redcolor">*</em>公司名称：</label>
+    	<div class="col-lg-12">
+    		<input class="form-control" required type="text" ng-model="company.corpName" name="corpName"/>
+			<div class="errbox" ng-if="!myForm.corpName.$valid"> 
+				公司名称不能为空
+			</div>
+    	</div>
+  	</div>
+  	<div class="col-lg-6 baseInputHeigh">
+    	<label class="col-lg-12">公司简称：</label>
+    	<div class="col-lg-12">
+    		<input class="form-control" type="text" ng-model="company.shortName"/>
+    	</div>
+  	</div>
+  	<div class="col-lg-6 baseInputHeigh">
+    	<label  class="col-lg-12"><em class="redcolor">*</em>企业电话：</label>
+    	<div class="col-lg-12">
+    		<input class="form-control" required ng-pattern="/^((0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/" type="text" ng-model="company.tel" name="tel"/>
+			<div class="errbox" ng-if="!myForm.tel.$valid"> 
+				企业电话未正确输入
+			</div>
+    	</div>
+  	</div>
+  	
+  	<div class="col-lg-6 baseInputHeigh">
+    	<label  class="col-lg-12"><em class="redcolor">*</em>企业类型：</label>
+    	<div class="col-lg-12">
+    		<input class="form-control" required type="text" ng-model="company.corpType" name="corpType"/>
+			<div class="errbox" ng-if="!myForm.corpType.$valid"> 
+				企业类型不能为空
+			</div>
+    	</div>
+  	</div>
+  	
+  	<div class="col-lg-6 baseInputHeigh">
+    	<label class="col-lg-12">所属行业：</label>
+    	<div class="col-lg-12">
+    		<input class="form-control" type="text" ng-model="company.business"/>
+    	</div>
+  	</div>
+  	
+  	<div class="col-lg-6 baseInputHeigh">
+    	<label class="col-lg-12"><em class="redcolor">*</em>所在地区：</label>
+    	<div class="col-lg-12">
+    		<input class="form-control " required type="text" ng-model="company.area" name="area"/>
+			<div class="errbox" ng-if="!myForm.area.$valid"> 
+				所在地区不能为空
+			</div>
+    	</div>
+  	</div>
+  	
+  	<div class="col-lg-6 baseInputHeigh">
+    	<label class="col-lg-12">企业地址：</label>
+    	<div class="col-lg-12">
+    		<input class="form-control" type="text" ng-model="company.addr"/>
+    	</div>
+  	</div>
+  	
+  	<div class="col-lg-6 baseInputHeigh">
+    	<label class="col-lg-12">邮政编码：</label>
+    	<div class="col-lg-12">
+    		<input class="form-control " type="text" ng-model="company.post"/>
+    	</div>
+  	</div>
+  	
+  	<div class="col-lg-6 baseInputHeigh">
+    	<label  class="col-lg-12">企业传真：</label>
+    	<div class="col-lg-12">
+    		<input class="form-control " type="text" ng-model="company.fax"/>
+    	</div>
+  	</div>
+  	
+  	<div class="col-lg-6 baseInputHeigh">
+    	<label class="col-lg-12">企业网址：</label>
+    	<div class="col-lg-12">
+    		<input class="form-control " type="text" ng-model="company.web"/>
+    	</div>
+  	</div>
+  
+	</fieldset>
+		<div ng-show="remindtext" class="{{remindtext =='成功保存' && 'saveremindsucc' || 'savereminderr'}} pull-right">{{remindtext}}</div>
+		<div class="col-lg-12  pull-right submit-buton margin-bottom42" ng-show="isSubmitShow.show">
+		<input  type="button"  class="btn pull-right  btn-size1 cancel"  value="取消" ng-click="cancelBtnIformation()"/>
+		<input ng-click="save()" type="button"  class="btn pull-right save-btn btn-size1"  value="提交"/>
+    </div>
+  </form>
+  
+  </div>
+  </div>
+</div>
+ 

@@ -1,0 +1,56 @@
+﻿<setpagetitlerow thetitle="航运公司 - 台账"></setpagetitlerow>
+<div class="flex-v right-content" ng-show="!ajaxing">
+	<div class="title-bg ">
+		<div class="nav-width">
+			复制功能&nbsp;/&nbsp;<span>复制列表</span>
+		</div>
+	</div>
+	<div class="cb"></div>
+	<div class="right-sumbg">
+		<div class="titlenew titlenew-bg">
+			<span class="titlenew-span">复制功能</span>
+		</div>
+		<div id="lookApply">
+			<div class="col-lg-6 margintb14 marginleft15">
+				<button id="data_sy" type="button" class="btn approve-btnactive"
+					ng-click="dhcheck(0)">复制列表({{dh_sy}})</button>
+			</div>
+			<div class="col-lg-4  margintb14 pull-right">
+				<span class="glyphicon glyphicon-search form-control-feedback"
+					id="searchIcons"></span> <input type="text"
+					ng-keypress="search(name, $event)" ng-model="name"
+					placeholder="请输入关键字"
+					class="form-control  col-lg-12 height42 padding20" />
+			</div>
+		</div>
+		<!-- 列表 -->
+		<div class="content-scroll cb">
+			<table class="table margintop20  bordertb table-hover tablethd">
+				<thead>
+					<tr>
+						<th class="marginleft30">副本名称</th>
+						<th>创建时间</th>
+						<th>是否公开</th>
+						<th class="text-center">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="col in cols">
+						<td class="selall"><a
+							href="#/frame/copy-form-detail?dupId={{col.dupId}}">{{col.dupName}}</a></td>
+						<td class="selall">{{col.dates}}</td>
+						<td>{{col.isPublic == 1 ? '公开' :'不公开'}}</td>
+						<td class="text-center">
+                	<a href="#/frame/copy?dupId={{col.dupId}}" class="edit2 marginright15">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编辑</a>
+                	<span ng-click="delt(col.dupId)"><a href="javascript:void(0)" class="delete2">&nbsp;&nbsp;&nbsp;&nbsp;删除</a></span>
+					<span ng-click="testInterface(col.dupId)"><a href="javascript:void(0)">&nbsp;&nbsp;&nbsp;&nbsp;测试</a></span>
+            </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- 列表结束 -->
+	</div>
+</div>
+<div ng-include="'../pgy-web-1.0/ui/publicAlert.html'"></div>
+

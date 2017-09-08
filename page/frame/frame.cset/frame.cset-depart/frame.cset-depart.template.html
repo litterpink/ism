@@ -1,0 +1,46 @@
+﻿<!-- 部门管理 -->
+
+<div class="flex-v right-content" ng-show="getData">
+	<div class="right-sumbg min-vh-80">
+		<script type="text/ng-template" id="angularTreeTemplate">
+			<div ui-tree-handle class="tree-node tree-node-content angular-ui-tree-handle">
+				<a class="btn btn-success btn-xs" ng-if="item.children && item.children.length > 0" data-nodrag ng-click="toggle(this)">
+					<span class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed, 'glyphicon-chevron-down': !collapsed }"></span>
+				</a>
+				<span ng-show="item.isEdit">  
+				<input class="width60" type="text" data-nodrag ng-model="item.name" />  
+			</span>
+				<span ng-show="!item.isEdit">  
+				{{ item.name }}{{item.name.length > 10 ? '...' : ''}}  
+			</span>
+				<a ng-hide="item.children.length>0||item.level==0" class="rightmargin10 pull-right btn btn-danger btn-xs" data-nodrag ng-click="removeItem(item)||remove(this)">
+					<span class="glyphicon glyphicon-remove"></span>
+				</a>
+				<a class="rightmargin10 pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(item)">
+					<span class="glyphicon glyphicon-plus"></span>
+				</a>
+				<a class="rightmargin10 pull-right btn btn-warning btn-xs" data-nodrag ng-click="editItem(item)">
+					<span class="glyphicon glyphicon-edit"></span>
+				</a>
+			</div>
+
+			<ol ui-tree-nodes="" class="paddingleft10" ng-model="item.children" ng-class="{hidden: collapsed}">
+				<li ng-repeat="item in item.children" ui-tree-node ng-include="'angularTreeTemplate'"> </li>
+			</ol>
+
+		</script>
+		<div ui-tree="treeOptions" id="tree-root" data-nodrag>
+			<ol ui-tree-nodes ng-model="angularTreeList">
+				<div class="treewidthcenter">
+					<li ng-repeat="item in angularTreeList" ui-tree-node ng-include="'angularTreeTemplate'"> </li>
+				</div>
+			</ol>
+		</div>
+		<div ng-show="remindtext" class="col-lg-9  pull-left">
+			<span class="pull-right {{remindtext =='成功保存' && 'savedepartsucc' || 'savedeparterr'}}">{{remindtext}}</span>
+		</div>
+		<div class="col-lg-9  pull-left submit-buton margin-bottom42">
+			<input ng-click="savedepart()" type="submit" class="btn pull-right save-btn btn-size1" value="保存">
+		</div>
+	</div>
+</div>

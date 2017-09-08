@@ -1,0 +1,47 @@
+<setpagetitlerow thetitle="我的审批-历史"></setpagetitlerow>
+<div class="flex-v right-content" ng-show="!ajaxing">
+	<div class="right-sumbg">
+		<div class="titlenew titlenew-bg">
+			<span class="titlenew-span">我的审批-历史</span>
+		</div>
+		<div id="lookApply">
+            <div class="col-lg-6 margintb14 marginleft15">
+                <button id="data_sy" type="button"
+                    class="btn approve-btnactive" ng-click="dhcheck(0)">已审批({{dh_sy}})</button>
+            </div>
+            <div class="col-lg-4  margintb14 pull-right">
+                <span class="glyphicon glyphicon-search form-control-feedback"
+                    id="searchIcons"></span> 
+                <input type="text"
+                ng-keypress="search(name, $event)" ng-model="name"
+                placeholder="请输入关键字" class="form-control  col-lg-12 height42 padding20" />
+            </div>
+        </div>
+        <div>
+        <div  class="content-scroll cb" >
+            <table class="table margintop20  bordertb table-hover tablethd">
+                <thead>
+                    <tr>
+                        <th class="marginleft30">申请名称</th>
+                        <th>申请时间</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="col in cols">
+                        <td ng-bind="col.wkId" class="none"></td>
+                        <td ng-bind="col.wkRecId" class="none"></td>
+                        <td class="selall"><a
+                            href="#/frame/approve-my_approve_history_check?wkRecId={{col.wkRecId}}&isNew={{col.isNew}}">{{col.title}}<img
+                                ng-if="col.isNew" src="./images/wcl.png" id="img" class="mf-5"></a></td>
+                        <td class="selall">{{col.updateTime}}</td>
+                        <td class="selall"><a href="javascript:void(0)"
+                            ng-click="ckApprove(col.wkRecId)" class="print"><img src="./images/print.png" />&nbsp;打印预览</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>	
+	</div>
+</div>
+

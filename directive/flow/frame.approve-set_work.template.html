@@ -1,0 +1,112 @@
+<div class="flex-v right-content" ng-show="!ajaxing">
+	
+	
+	<div class="topbutton">
+		<div ng-click="changeOffice()" class="tn pull-left {{officer && 'save-btn' || 'cancel'}} btn-size2">流程设置</div>
+		<div ng-click="changePeople()" class="tn pull-left {{people  && 'save-btn' || 'cancel'}} btn-size2">数据设置</div>
+		<div ng-click="changePeople()" class="tn pull-left {{people  && 'save-btn' || 'cancel'}} btn-size2">审批设置</div>
+		<div ng-click="changePeople()" class="tn pull-left {{people  && 'save-btn' || 'cancel'}} btn-size2">新建流程设置</div>
+		<div ng-click="changePeople()" class="tn pull-left {{people  && 'save-btn' || 'cancel'}} btn-size2">流程后续设置</div>
+		<div ng-click="changePeople()" class="tn pull-left {{people  && 'save-btn' || 'cancel'}} btn-size2">查询数据设置</div>
+		<div ng-click="changePeople()" class="tn pull-left {{people  && 'save-btn' || 'cancel'}} btn-size2">定时器设置</div>
+	</div>
+	<div class="margintop-sum right-sumbg min-vh-80" style="margin-top:0;">
+	
+		<form>
+			<div class="form-group">
+				<div class="col-sm-12 marginbot14">
+					<span class="redcolor">*</span>流程名称:
+				</div>
+				<div class="col-sm-12">
+					<input type="text" placeholder="名称不能超过15个字" ng-model="title"
+						class="form-control height42" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-12 margintop30 marginbot14">
+					关联表单(无选择使用默认数据):
+				</div>
+				<div class="col-sm-12">
+					<span class="form-ipts float-left">{{formName}} <a
+						href="javascript:void(0)"
+						class="glyphicon glyphicon-remove float-right position-top24 "
+						ng-if="formName" ng-click="delbd()"></a>
+					</span> <a href="javascript:void(0)" ng-click="selbd()"
+						class="check-form check-form-size marginleft10"
+						style="clear: both; display: inline-block;">
+						<i class="icon-plus"></i> 选择表单</a>
+				</div>
+			</div>
+			<div class="form-group">
+                <div ng-click="changeOffice()" class="margintop30 tn pull-left  {{officer && 'save-btn' || 'cancel'}} btn-size1 marginleft15 marginleft15">职务选择</div>
+                <div ng-click="changePeople()" class="margintop30 tn pull-left  btn-size1  {{people && 'save-btn' || 'cancel'}}">人员选择</div>
+                <div class="col-sm-9 border-1-4 paddingtop15 paddingb15 marginleft15 float-left marginright-25">
+					<div ng-show="officer">
+						<span class="form-ipts float-left">{{startOfficerName}} 
+							<a href="javascript:void(0)" class="glyphicon glyphicon-remove float-right position-top24 "
+							ng-if="startOfficerName" ng-click="delOfficer()"></a>
+						</span> 
+						<a ng-click="checkOfficer()" class="check-form check-form-size marginleft10" style="clear: both; display: inline-block; ">
+							<i class="icon-plus"></i> 选择职务
+						</a>
+					</div>
+					<div ng-show="people" ng-click="showPeople()"  class="col-lg-6">
+						<span class="glyphicon glyphicon-menu-down form-control-thpeople"></span>
+						<input readonly="readonly" type="text" class="form-control col-lg-12 cursor-pointer" style="height:42px" ng-model="textNumber" />
+						<div class="peopleChangeBox" ng-show="peopleList">
+							<div id="textList">
+								<ul>
+									<li ng-click="choosePeople($index)" ng-repeat="item in peopleData" formid="item.ID">{{item.name}}</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+                </div>
+            </div>
+		</form>
+		<div lines-input="linesInput"></div>
+		<div lines-input="linesInputOfficer"></div>
+		<div lines-input="linesInputspr"></div>
+		<div class="cb"></div>
+		<div class="right-sumwidth">
+			<div class="titlenew titlenew-bg">
+				<span class="titlenew-span">审批流程</span>
+				<button type="button" class="btn fr addflow" ng-click="addjb()">
+					<i class="icon-plus"></i> 添加级别
+				</button>
+			</div>
+			<table class="table bordertb table-hover tablethdetail">
+				<thead>
+					<tr>
+						<th class="with10b">级别</th>
+						<th class="col-lg-3">级别名称</th>
+						<th>审批人</th>
+						<th>通过人数</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in listData">
+						<td ng-bind="item.stepId"></td>
+						<td><input ng-model="item.stepName"
+							class="form-control form-newcontrol" /></td>
+						<td>
+							<span class="span-border"> {{item.handleStr}} <a href="javascript:void(0)" class="glyphicon glyphicon-remove float-right position-top14 " ng-if="item.handleStr" ng-click="delsprbd(item.stepId)"></a>
+							</span> <a href="javascript:void(0)" ng-click="checkspr(item.stepId,item.handleStr)" class="check-form check-form-size2 marginleft5"><span class="fa fa-plus"></span>增加</a>
+						</td>
+						<td><input type="text" class="form-control" style="width:80px;"  ng-keyup ="clearNoNum(item,'handlePassCount')"  ng-model="item.handlePassCount" /></td>
+						<td ng-click="del(item.stepId)"><a href="javascript:void(0)" class="delete2">&nbsp;&nbsp;&nbsp;&nbsp;删除</a></td>
+						<!--  <td>{{item.ids}}</td> -->
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-lg-12  pull-right submit-buton margin-bottom42">
+				<input type="button" class="btn pull-right  btn-size1 cancel"
+					ui-sref="frame.approve-set_work" value="取消">
+				<button type="button" ng-click="save()"
+					class="btn pull-right save-btn btn-size1 marginright15">&nbsp;&nbsp;提交&nbsp;&nbsp;</button>
+		</div>
+	</div>
+</div>
+

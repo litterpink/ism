@@ -1,0 +1,63 @@
+/*left nav*/
+#myMessage{margin:0;}
+.message-nav{border:1px solid #dedede;padding:0;font-size:14px;color:#333;border-bottom:none;}
+.message-nav ul li{padding:16px 0;border-bottom:1px solid #dedede;display:block;}
+.message-nav ul li:hover{background:#00acee;color:#fff;cursor:pointer;}
+.message-nav ul li:hover .message-all, .message-active .message-all{background:url(../../ism/images/massage_all_hover.png) no-repeat 20px center;display:block;text-indent:45px;}
+.message-all{background:url(../../ism/images/massage_all.png) no-repeat 20px center;display:block;text-indent:45px;}
+.message-unread{background:url(../../ism/images/message_unread.png) no-repeat 20px center;display:block;text-indent:45px;}
+.message-nav ul li:hover .message-unread, .message-active .message-unread{background:url(../../ism/images/message_unread_hover.png) no-repeat 20px center;display:block;text-indent:45px;}
+.message-read{background:url(../../ism/images/message_read.png) no-repeat 20px center;display:block;text-indent:45px;}
+.message-nav ul li:hover .message-read, .message-active .message-read{background:url(../../ism/images/message_read_hover.png) no-repeat 20px center;display:block;text-indent:45px;}
+.message-untreated{background:url(../../ism/images/message_untreated.png) no-repeat 20px center;display:block;text-indent:45px;}
+.message-nav ul li:hover .message-untreated, .message-active .message-untreated{background:url(../../ism/images/message_untreated_hover.png) no-repeat 20px center;display:block;text-indent:45px;}
+.message-ok{background:url(../../ism/images/message_ok.png) no-repeat 20px center;display:block;text-indent:45px;}
+.message-nav ul li:hover .message-ok, .message-active .message-ok{background:url(../../ism/images/message_ok_hover.png) no-repeat 20px center;display:block;text-indent:45px;}
+.message-delete{background:url(../../ism/images/message_delete.png) no-repeat 20px center;display:block;text-indent:45px;}
+.message-nav ul li:hover .message-delete, .message-active .message-delete{background:url(../../ism/images/message_delete_hover.png) no-repeat 20px center;display:block;text-indent:45px;}
+.message-icon{float:right;background:#df5640;border-radius:10px;padding:0 7px;display:inline-block;text-indent:0;color:#fff;margin-right:20px;}
+.message-active{background:#00acee;color:#fff;cursor:pointer;}
+.message-right{background:#fff;border-radius:3px;border:1px solid #dedede;box-shadow:0 0 2px rgba(0,0,0,0.18);}
+.message-scroll {height: 500px;overflow-y: auto;}
+.message-title{display:block;overflow:hidden;padding:10px 0;} 
+.message-header-delete{position:relative;top:3px;left:5px;}
+.all-delete:hover, input[type='checkbox']{cursor:pointer;}
+.message-search{border:1px solid #cecece;background:#fff;padding:3px 10px 3px 5px;border-radius:15px;margin-right:10px;}
+.message-search input{width:230px; padding:3px 5px;border:none;}
+.search-all-checked span{background:#fff;margin:0 6px;border:1px solid #dedede;border-radius:3px;padding:4px 7px;}
+input{outline:none;}
+.senior-search{background:#f5f5f5;padding:17px 10px;font-size:12px;overflow:hidden;}
+.search-all button{position:relative;top:-2px;}
+.senior-search ul{border-top:1px solid #dedede;margin-top:20px;}
+.senior-search li{height:42px;line-height:42px;border-bottom:1px solid #dedede;}
+.search-title{color:#888;width:10%;padding-right:0;padding-left:0;}
+.search-all-content{padding-left:0;}
+.search-all-content span{color:#00acee;margin:0 5px;padding:4px 5px;font-weight:bolid;}
+.search-all-content span:hover{color:#fff;background:#00acee;border-radius:5px;cursor:pointer;}
+.search-all-ipt{padding-left:0;}
+.search-titles{padding-left:0;color:#888;}
+.search-all-ipt input{padding-left:5px;padding-right:5px;border:1px solid #d6d6d6;width:180px;height:30px;line-height:24px;color:#999;border-radius:3px;}
+.message-search-width{width:210px;text-align:center;margin:0 auto;height:38px;line-height:38px;margin-top:20px;}
+.message-search-width:hover{cursor:pointer;}
+.senior-search li.search-height{height:60px;line-height:60px;}
+.message-search .btn.focus, .message-search .btn:focus, .message-search .btn:hover{color:#fff;}
+.search-all-content span.checkcss{color: #fff;background: #00acee;border-radius: 5px;cursor: pointer;}
+span.all-delete{background:url(../../ism/images/delete.png) no-repeat center;width:14px;height:18px;display:inline-block;position:relative;top:5px;}
+span.all-delete:hover{background:url(../../ism/images/delete_select.png) no-repeat center;}
+span.all-delete3{background:url(../../ism/images/delete3.png) no-repeat center;width:14px;height:18px;display:inline-block;position:relative;top:5px;}
+span.all-delete3:hover{background:url(../../ism/images/delete3.png) no-repeat center;}
+.delsize img{width:13px;height:15px;position:relative;top:-2px;}
+.delsize{margin-right:9px;}
+.borderb-dashed{border-bottom:1px #b8b8b8 dashed;}
+.detail-cont-sum{width:95%;margin:0 auto;}
+.detail-cont-title{font-size:30px;color:#333;font-weight:heighter;margin-top:33px;margin-bottom:24px;}
+.detail-ul{margin-left:15px;color:#999;line-height:20px;}
+.detail-ul button{outline:0;border-radius:10px;border:1px solid #f6bb42;background:#fff;padding:0 20px;margin-right:8px;}
+.datail-ul-lis{margin-top:10px;}
+.detail-cont{border-bottom:1px dashed #888;padding-bottom:22px;}
+.detail-main-text{width:95%;margin:0 auto;margin-top:24px;margin-bottom:10px;}
+.btn-handle{text-align:center;width:150px;height:54px;margin-top:30px;margin-bottom:24px;}
+.error-message{color:#f00;}
+.searchNew{padding: 16px 0;border-bottom: 1px solid #dedede;display: block;}
+span.searchicon{background:url(../../ism/images/searchicon.png) no-repeat 20px center;display: block;text-indent: 45px;}
+.searchDel{float:right;margin-right:20px;}

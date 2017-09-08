@@ -1,0 +1,215 @@
+/*------------------公司设定--------------*/
+
+
+/*公司信息*/
+
+.btn-edit{
+	margin-bottom: -10px;
+}
+
+.errbox,.required,.required-tip{
+	color:#ff0000;
+}
+
+.errbox,.required-tip{
+	margin-top:5px;
+}
+
+.operation-section{
+	margin:15px 0 20px;
+}
+
+.company-info-list li{
+	height:100px;
+}
+
+
+.saveremindsucc{
+	padding: 6px 190px 10px 0;
+	color: green;
+}
+.savereminderr{
+	padding: 6px 190px 10px 0;
+	color: red;
+}
+.saveremindsuccT{
+	width: 100%;
+	padding: 6px 70px 10px 0;
+	color: green;
+}
+
+.savereminderrT{
+	width: 100%;
+	padding: 6px 70px 10px 0;
+	color: red;
+}
+
+
+.min-height425{
+	min-height: 425px;
+}
+
+.min-height120{
+	line-height: 80px; 
+	font-size: 16px;
+	min-height: 80px;
+}
+
+
+
+/*员工管理*/
+
+.company-staff{
+	margin:-5px;
+}
+
+.menu-tree,.staff-wrapper{
+	position: absolute;
+	top:0;
+	bottom:0;
+	overflow-y:auto;
+}
+.menu-tree{
+	left: 0;
+	width: 160px;
+	background: #f5f5f5;
+	padding:40px 5px;
+	border-right:solid 1px #ececec;
+	
+}
+
+.icon,.tree-nodeName:before{
+	display: inline-block;
+	background: url(../../../images/icons.png) no-repeat;
+}
+
+.arrow-close{
+	width:8px;
+	height:12px;
+	background-position: 0 1px;
+}
+
+.arrow-open{
+	width:8px;
+	height:9px;
+	background-position: -12px 0;
+}
+
+.tree-nodeName{
+	position: relative;
+	padding-left: 24px;
+	display: inline-block;
+	color:#333;
+	font-weight: normal;
+}
+
+.tree-nodeName:before{
+	content:"";
+	position: absolute;
+	left:4px;
+	top:4px;
+	width: 14px;
+	height:12px;
+	background-position: -29px 0;
+}
+
+
+/*保存提示*/
+.savedepartsucc{
+	padding:6px 80px 5px 0;
+	color:green;
+}
+.savedeparterr{
+	padding:6px 80px 5px 0;
+	color:red;
+}
+
+
+/*员工信息*/
+.staff-wrapper{
+	position: absolute;
+	left:160px;
+	right:0;
+	padding:5px;
+}
+
+
+
+/*职务管理*/
+
+.short-select{
+	width:73%;
+	margin-right:15px;
+}
+
+/*弹出层*/
+
+.close {
+    font-weight: normal;
+    color: #fff;
+    text-shadow: 0 1px 0 #333;
+    filter: alpha(opacity=20);
+    opacity: 1;
+}
+
+
+.modal-header {
+    padding: 10px 15px;
+    border-bottom:none;
+}
+
+.modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+}
+
+.modal-footer{
+	border-top:none;
+	padding-top:0;
+	padding-bottom: 20px;
+}
+
+
+.search{
+	margin-right:20px;
+	width:30%;
+}
+
+.search-field{
+	width:70%;
+	position: relative;
+	margin-right:5px;
+}
+
+.search-field input{
+	padding:6px 12px 6px 40px;
+}
+
+.search-field span{
+	left:4px;
+	top:1px;
+	color:#5a5a5a;
+}
+
+.pagination a,.pagination > li > a[disabled='disabled']:hover{
+	color:#333 !important;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus,.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+    background-color: #3bafda;
+    border-color: #3bafda;
+    color:#fff !important;
+}
+
+
+@media ( max-width :900px) {
+
+	.search{
+		width:60%;
+	}
+	
+	.search-field{
+		width:70%;
+	}
+
+}

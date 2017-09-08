@@ -1,0 +1,93 @@
+﻿<setpagetitlerow thetitle="航运公司 - 台账"></setpagetitlerow>
+<div class="auto-text-icon approve-add" ng-show="!ajaxing">
+	<div class="right-sumbg">
+		<div class="titlenew titlenew-bg">
+			<span class="titlenew-span">复制功能</span>
+		</div>
+		<div class="modal-body" id="refernceBody">
+			<form>
+				<div class="col-lg-6">
+					<label for="recipient-name" class="control-label text-left"><em
+						class="redcolor">*</em>副本名称:</label> <input type="text"
+						class="form-control col-lg-12" ng-model="copyName">
+				</div>
+				<div class="col-lg-6 marginbot14">
+					<label for="recipient-name" class="control-label text-left"><em
+						class="redcolor">*</em>文本编号:</label> <span
+						class="glyphicon glyphicon-menu-down form-control-theship"></span>
+					<input type="text" class="form-control col-lg-12 cursor-pointer"
+						readonly="readonly" id="textIndex" ng-model="textNumber" formid='' />
+					<div id="textList" class="none">
+						<ul>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<label for="recipient-name" class="control-label text-left"><em
+						class="redcolor">*</em>是否有效:</label>
+					<div id="isValid">
+						<input type="radio" value="1" name="isAvailable" checked id="isAvailableTrue"/>是 <input
+							type="radio" value="0" name="isAvailable" id="isAvailableFalse"/>否
+					</div>
+				</div>
+				<div class="col-lg-6 marginbot14">
+					<label for="recipient-name" class="control-label text-left"><em
+						class="redcolor">*</em>是否公开:</label>
+					<div id="isPublic">
+						<input type="radio" value="1" name="isPublic" checked id="isPublicTrue"/>是 <input
+							type="radio" value="0" name="isPublic" id="isPublicFalse"/>否
+					</div>
+				</div>
+				<div class="col-lg-6 marginbot14">
+					<label for="recipient-name" class="control-label text-left"><em
+						class="redcolor">*</em>日期:</label> <input type="text"
+						class="form-control cursor-pointer" id="copyDate"	class="Wdate" name="dates"
+						onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" readonly="readonly"/>
+				</div>
+				<button type="button" class="btn fr addflow margintop20 marginbot20"
+					ng-click="creatRows()">
+					<span class="fa fa-plus"></span>&nbsp;添加
+				</button>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>列名</th>
+							<th>关联条件</th>
+							<th>内容</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="referenceTbody">
+						<tr ng-repeat="item in listData">
+							<td>
+								<!-- <input type="text" ng-model="item.column"/> -->
+								{{item.colName}} <a href="javascript:void(0)"
+								ng-click="columnName(item.stepId,item.colName)">[选择列名]</a>
+							</td>
+							<td>
+								<select ng-model="item.oper">
+									<option ng-repeat="item in proOptions" value="{{item.vlue}}">{{item.name}}</option>
+								</select>
+							</td>
+							<td><input type="text" ng-model="item.vlue"
+								class="form-control" /></td>
+							<td ng-click="deleteRow(item.stepId)"><a
+								href="javascript:void(0)">删除</a></</td>
+						</tr>
+						<div lines-input="columnNames"></div>
+						<div lines-input="relationship"></div>
+					</tbody>
+				</table>
+				<div class="cb"></div>
+
+				<div style="width: 100%; text-align: center">
+					<input class="btn save-btn btn-size1"
+						style="margin: 0 auto; text-align: center;" value="提交"
+						ng-click="save()" type="button">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+

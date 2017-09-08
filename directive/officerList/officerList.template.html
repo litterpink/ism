@@ -1,0 +1,16 @@
+
+<div class="modal-content modal-bodyheight">
+	<div parent-dragable=3 class="modal-header public-headerbg">
+		<button type="button" class="close" data-dismiss="modal">
+			<span ng-click="cancel()" >×</span><span class="sr-only">Close</span>
+		</button>
+		<h4 class="modal-title" id="publicTitle">职位选择</h4>
+	</div>
+	<div class="modal-body" >
+		<span ng-repeat="item in data" 
+		ng-click="checkOfficer($index)"
+		class="btn btn-default margin-em05" >
+			<i class="icon-plus"></i>
+		{{item.officer}}</span>
+	</div>
+</div>

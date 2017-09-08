@@ -1,0 +1,105 @@
+{
+  "angularTreeData": {
+    "departmentId": 1,
+    "name": "总部",
+    "children": [
+      {
+        "departmentId": 2,
+        "name": "研发部",
+        "children":[
+          {
+            "departmentId": 3,
+            "name": "技术部",
+            "children": [{
+                  "departmentId": 4,
+                  "name": "前端组",
+                  "children": []
+                }
+              ]
+            }]
+          },
+      {
+            "departmentId": 5,
+            "name": "行政部",
+            "children": [{
+              "departmentId": 6,
+              "name": "人事组",
+              "children": []
+            }]
+      }
+        ]
+  },
+  "departmentData":[
+    {
+      "departmentId": 1,
+      "departmentName": "公司总部",
+      "parentId":0,
+      "departmentHeader": "老大",
+      "memberNum": 5,
+      "departmentDuty": "公司总部..."
+    },{
+      "departmentId": 2,
+      "departmentName": "研发部",
+      "parentId":0,
+      "departmentHeader": "老大",
+      "memberNum": 5,
+      "departmentDuty": "公司总部..."
+    },{
+      "departmentId": 3,
+      "departmentName": "技术部",
+      "parentId":0,
+      "departmentHeader": "老大",
+      "memberNum": 5,
+      "departmentDuty": "公司总部..."
+    },{
+      "departmentId": 4,
+      "departmentName": "前端组",
+      "parentId":0,
+      "departmentHeader": "老大",
+      "memberNum": 5,
+      "departmentDuty": "公司总部..."
+    }
+  ],
+  "departmentUse": [
+    {
+      "id": 1,
+      "userId": 1,
+      "loginName": "lg",
+      "userName": "李果1",
+      "password": "111",
+      "shipName": "东方号1",
+      "department": "java组",
+      "otherDepartment":["前端组"] ,
+      "handleStr": ["职务1"],
+      "otherHandleStr": ["职务1"],
+      "companyRole": "管理者",
+      "sysRole": "体系用户"
+    },{
+      "id": 1,
+      "userId": 1,
+      "loginName": "lg",
+      "userName": "李果1",
+      "password": "111",
+      "shipName": "东方号1",
+      "department": "java组",
+      "otherDepartment":["前端组"] ,
+      "handleStr": ["职务2"],
+      "otherHandleStr": ["职务2"],
+      "companyRole": "管理者",
+      "sysRole": "体系用户"
+    },{
+      "id": 3,
+      "userId": 3,
+      "loginName": "lg",
+      "userName": "李果3",
+      "password": "111",
+      "shipName": "东方号3",
+      "department": "java组",
+      "otherDepartment":["前端组"] ,
+      "handleStr": ["职务1","职务2"],
+      "otherHandleStr": ["职务1","职务2"],
+      "companyRole": "管理者",
+      "sysRole": "体系用户"
+    }
+  ]
+}

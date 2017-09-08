@@ -1,0 +1,11 @@
+
+<div class="col-md-12" style="padding:0;">
+	 <span class="glyphicon glyphicon-menu-down selectdown"></span>
+	<input type="text" class="form-control" id="theShip" readonly="readonly" ng-click="optionshow()" ng-model="selecttext" att={{listId}} name="shipNameCn" >
+	<input type="hidden" value={{listId}}  name="shipId" id="shipId"/>
+	<div class="col-md-12 addship-name" ng-show="optionstate">
+		<ul>
+			<li ng-repeat= "item in optionlist.optionarr" ng-click='addoption($index)' id={{item}}>{{item}}</li>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,19 @@
+.double-select {
+    width: 180px;
+    height: 220px !important;
+}
+
+.double-select option {
+    padding: 2px 10px;
+}
+
+.btn-select {
+    width: 60px;
+    margin: 0 30px;
+}
+
+.btn-select input[type=button] {
+    display: block;
+    width: 60px;
+    margin-bottom: 15px;
+}

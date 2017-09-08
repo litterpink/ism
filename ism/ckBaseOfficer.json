@@ -1,0 +1,45 @@
+{
+  "data":[{
+    "seq":1,
+    "officer":"总经理",
+    "department" : "总经办",
+    "companyRole" : "普通职员",
+    "isLand":"否",
+    "officerId":11
+  },{
+    "seq":1,
+    "officer":"总经理",
+    "department" : "总经办",
+    "companyRole" : "普通职员",
+    "isLand":"否",
+    "officerId":12
+  },{
+    "seq":1,
+    "officer":"总经理",
+    "department" : "总经办",
+    "companyRole" : "普通职员",
+    "isLand":"否",
+    "officerId":13
+  },{
+    "seq":1,
+    "officer":"总经理",
+    "department" : "总经办",
+    "companyRole" : "普通职员",
+    "isLand":"否",
+    "officerId":14
+  },{
+    "seq":1,
+    "officer":"总经理",
+    "department" : "总经办",
+    "companyRole" : "普通职员",
+    "isLand":"否",
+    "officerId":14
+  },{
+    "seq":1,
+    "officer":"总经理",
+    "department" : "总经办",
+    "companyRole" : "普通职员",
+    "isLand":"否",
+    "officerId":14
+  }]
+}

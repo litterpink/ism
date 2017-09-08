@@ -1,0 +1,81 @@
+<div class="modal-content">
+	<div parent-dragable=3 class="modal-header public-headerbg">
+		<button type="button" class="close" data-dismiss="modal">
+					<span ng-click="cancel()" >×</span><span class="sr-only">Close</span>
+				</button>
+		<h4 class="modal-title" id="publicTitle">{{data.publicTitle}}</h4>
+	</div>
+	<form novalidate name="myForm" ng-submit="save()">
+		<div class="modal-body" id="addUserCont">
+			<div class="new-staff">
+				<div class="row" id="addFormUser">
+					<div class="col-sm-6 form-group">
+						<label for="recipient-name" class="control-label text-left"><span class="required">*</span>登录名:</label>
+						<input type="text" required ng-maxlength="15" class="form-control" id="recipient-name" ng-model="loginName" name="loginName">
+						<span class="errbox pa" ng-if="myForm.loginName.$invalid && myForm.loginName.$dirty">登录名最多15个字</span>
+					</div>
+					<div class="col-sm-6 form-group">
+						<label for="message-text" class="control-label"><span class="required">*</span>用户名:</label>
+						<input type="text" required ng-maxlength="15" class="form-control" id="userName" ng-model="userName" name="userName">
+						<span class="errbox pa" ng-if="myForm.userName.$invalid && myForm.userName.$dirty">用户名最多15个字</span>
+					</div>
+					<div class="col-sm-6 form-group">
+						<label for="recipient-name" class="control-label">用户密码:</label>
+						<input type="password" class="form-control" id="plainPassword" name="plainPassword" ng-model="password">
+					</div>
+					<div class="col-sm-6 form-group">
+						<label for="recipient-name" class="control-label">所在船舶:</label>
+						<select class="form-control"   ng-model="selectShip" ng-options="x.shipName for x in data.shipData">
+							<option value="">请选择船舶</option>
+						</select>
+					</div>
+					<div class="col-sm-6 form-group">
+						<label for="recipient-name" class="control-label">所在部门:</label>
+						<select class="form-control" ng-model="selectDepartment" ng-options="x.departmentName for x in data.officerData" ng-change="changeDepartment(selectDepartment)">
+							<option value="">请选择部门</option>
+						</select>
+					</div>
+					<div class="col-sm-6 form-group">
+						<label for="recipient-name" class="control-label">公司职务:</label>
+						<select class="form-control" ng-model="selectOfficer"  ng-options="x for x in officerData">
+							<option value="">请选择职务</option>
+						</select>
+
+					</div>
+					<div class="col-sm-6 form-group">
+						<label for="recipient-name" class="control-label">公司角色:</label>
+						<select class="form-control" name="companyRole" ng-model="companyRole">
+							<option value="">请选择公司角色</option>
+							<option value="管理者">管理者</option>
+							<option value="普通职员">普通职员</option>
+						</select>
+					</div>
+					<div class="col-sm-6 form-group">
+						<label for="recipient-name" class="control-label">系统角色:</label>
+						<select class="form-control" name="sysRole" ng-model="sysRole">
+							<option value="">请选择系统角色</option>
+							<option value="管理员">管理员</option>
+							<option value="体系用户">体系用户</option>
+						</select>
+					</div>
+					<div class="col-sm-6 input-right-icon form-group">
+						<label for="message-text" class="control-label">工作地:</label>
+						<span class="glyphicon glyphicon-menu-down form-control-theship"></span>
+						<input type="text" class="form-control" id="theShip" readonly="readonly" ng-click="getShipList()" ng-model="shipNames" att={{listId}} name="shipNameCn">
+						<input type="hidden" value={{listId}} name="shipId" id="shipId" />
+						<div class="addship-name" ng-show="shiplist">
+							<ul>
+								<li ng-repeat="list in data.shipData" ng-click='addListShipt($index)' id={{list.shipId}}>{{list.shipNameCn}}</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="cb"></div>
+		<div class="modal-footer btn-section text-right">
+			<input type="submit" class="btn btn-info btn-save" ng-disabled="myForm.$invalid">
+			<button type="button" class="btn btn-default  btn-cancel" ng-click="cancel()">{{data.publicBtnr}}</button>
+		</div>
+	</form>
+</div>

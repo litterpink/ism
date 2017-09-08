@@ -1,0 +1,5 @@
+<label ng-repeat="item in checklist.optionarr"  class="paddinglr10"><input name="Fruit" type="radio" value="" ng-click="check(item)" />{{item}} </label> 
+
+<div class="errbox" ng-if="checkstate"> 
+	{{type.errtext}}
+</div>

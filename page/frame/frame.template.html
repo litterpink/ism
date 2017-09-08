@@ -1,0 +1,42 @@
+﻿<!--头部-->
+<div class="header clearfix">
+	<h3 class="main-title fl">航运公司管理{{ConfigData.userData.companyName}}</h3>
+	<ul class="tab-menu fl">
+		<li ng-repeat="menu in ConfigData.topMeunData" class="fl {{menu==0&&'-sep'||''}} {{menuState.topMeun==menu.u && menu.u && 'active' || ''}}"><i class="fa fa-user color-0000" ng-show="menu.sub"> </i> <i class="color-{{(menu.sub || menu.i) && 'aaa' || '0000'}}" ng-show="menu.s"> </i>
+			<em5 class="" ng-show="!menu.u">{{menu.s}}</em5>
+			<a href="#/frame/{{menuState.leftMeun}}-{{menu.u}}" ng-show="menu.u">{{menu.s}} </a>
+		</li>
+	</ul>
+	<div class="sys-info fr right-user">
+		<div class="user-left user user-setting fl" id="user-left">
+			<p class="user-info">
+				<span>您好，{{ConfigData.userData.userName}}</span><span class="caret"></span>
+			</p>
+			<ul class="ul-user user-menu" id="ul-user">
+				<li ng-click="hidenmy()" ng-show="ConfigData.userData.extInfo.role">
+					<a href="#/frame/account">个人中心</a>
+				</li>
+				<li ng-click="logout()">
+					<a>注销</a>
+				</li>
+			</ul>
+		</div>
+		<div class="user-right sys-setting fl">
+			<a href="">设置<span class="fanew fanew-setup-other fanew-setup-icon"></span></a>
+		</div>
+	</div>
+</div>
+<!--主体-->
+<div class="content">
+	<!--左侧边栏-->
+	<div class="sidebar">
+		<ul class="sys-menu">
+			<li ng-repeat="menu in ConfigData.menuData" class="item {{menuState.leftMeun==menu.u && 'active' || ''}}">
+				<a href="#/frame/{{menu.u}}{{menu.sub[0].u && '-' || ''}}{{menu.sub[0].u}}" ng-show="menu.s">
+					<div class="menu-icon fl text-center"><span class="{{menu.i}}"></span></div><span  class="menu-text">{{menu.s}}</span></a>
+			</li>
+		</ul>
+	</div>
+	<!--右侧内容-->
+	<div class="content-main" ui-view></div>
+</div>

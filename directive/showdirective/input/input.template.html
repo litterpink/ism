@@ -1,0 +1,7 @@
+
+<form name="myForm">
+	<input type="text" placeholder={{type.placeHolder}} ng-maxlength="type.maxLength" ng-minlength="type.minLength" {{type.required}} name="jointext"  ng-model="jointext" class="form-control height42" />
+	<div class="errbox" ng-if="myForm.jointext.$invalid && myForm.jointext.$dirty"> 
+		{{type.errorText}}
+	</div>
+</form>

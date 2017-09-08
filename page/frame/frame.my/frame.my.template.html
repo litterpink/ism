@@ -1,0 +1,199 @@
+<setpagetitlerow thetitle="我的消息"></setpagetitlerow>
+<div class="flex-v right-content margintop20" ng-show="!ajaxing">
+	<!-- left nav begin -->
+	<div class="row" id="myMessage">
+		<div class=" col-lg-3 message-nav ">
+			<ul id="leftNav">
+			  <li ng-click="showList(name)" ng-repeat="name in listNames"
+					class="{{name == activeListName &&'message-active' || ''}}">
+					<span class="message-unread"><span class="stateName">{{name}}</span><span
+						class="message-icon" ng-show="lists[name].length">{{lists[name].length}}</span></span>
+				</li>
+				<li ng-repeat="col in searchList"><span class="searchicon"
+					ng-click="searchClick(col.searchId)"><span
+						style="display: none;" class="tt"></span>{{col.msgName}}<img
+						class="searchDel" ng-click="searchDel(col.searchId,$event)"
+						src="images/searchdelicon.png" /></span>
+				</li>
+			</ul>
+		</div>
+		<!-- left nav end -->
+		<!-- right table begin -->
+		<div class="col-lg-9" ng-if="activeListName">
+			<div class="message-right">
+				<div class="message-title titlenew-bg cb">
+					<div class="fl" ng-hide="activeListName == '已删除' || activeListName == '搜索'">
+						<input type="checkbox" class="message-header-delete"
+							ng-model="selectAll" />&nbsp;&nbsp;<span class="all-delete3"
+							ng-click="deletes()"></span>
+					</div>
+					<div class="fr">
+						<div class="fl message-search">
+							<input type="text" placeholder="查询内容" ng-model="searchVal" /> <img
+								src="images/message_search.png" />
+						</div>
+						<button type="button"
+							class="btn marginright15 editprimaty-btn btn-size"
+							ng-click="seniorSearch()">高级搜索</button>
+					</div>
+				</div>
+				<!-- search begin -->
+				<div class="cb"></div>
+				<div class="senior-search" ng-show="!isHide">
+					<div class="search-all">
+						<span>已筛选条件:</span> <span class="search-all-checked"></span>&nbsp;&nbsp;&nbsp;
+						<span>{{titleVal}}</span>&nbsp;&nbsp;&nbsp;&nbsp; <span>{{contVal}}</span>
+						<button class="fr margin-right36  btn-sizesearch editprimaty-btn"
+							ng-click="saveSearch()">保存搜索结果</button>
+					</div>
+					<ul>
+						<li id="primary">
+							<div class="col-lg-2 search-title">主分类:</div>
+							<div class="col-lg-9 search-all-content">
+								<search-cont text="primary"></search-cont>
+							</div>
+							<div class="col-lg-2 search-title">可多选</div>
+						</li>
+						<li id="children">
+							<div class="col-lg-2 search-title">子分类:</div>
+							<div class="col-lg-9 search-all-content">
+								<search-cont text="children"></search-cont>
+							</div>
+							<div class="col-lg-2 search-title">可多选</div>
+						</li>
+						<li id="state">
+							<div class="col-lg-2 search-title">状态:</div>
+							<div class="col-lg-9 search-all-content">
+								<search-cont text="state"></search-cont>
+							</div>
+							<div class="col-lg-2 search-title">可多选</div>
+						</li>
+						<li>
+							<div class="col-lg-1 search-titles">标题:</div>
+							<div class="col-lg-4 search-all-ipt">
+								<input type="text" placeholder="请输入标题" ng-model="titleVal"
+									class="title-val" />
+							</div>
+							<div class="col-lg-1 search-titles">正文:</div>
+							<div class="col-lg-4 search-all-ipt">
+								<input type="text" placeholder="请输入标题" ng-model="contVal"
+									class="cont-val" />
+							</div>
+						</li>
+						<li class="search-height">
+							<div href="#" class="editprimaty-btn message-search-width"
+								ng-click="seachSum()">
+								<img src="images/message_search_all.png" />搜索
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- search end -->
+				<div class="tabeleStyle message-scroll cb" id="contentScroll">
+					<table class="table table-hover  table-borderedc">
+						<tbody>
+							<tr id="{{item.msgId}}"
+								ng-repeat="item in lists[activeListName] | filter :{msgTitle:searchVal}">
+								<td class="none">{{item.msgId}}</td>
+								<td><input type="checkbox" ng-checked="selectAll" ng-hide="activeListName == '已删除' || activeListName == '搜索'"/></td>
+								<td>{{item.msgSendUserName}}</td>
+								<td><a href="#/frame/my?msgid={{item.msgId}}"
+									ng-click="searchDetail(item.msgId,item.msgState)">{{item.msgTitle}}</a></td>
+								<td>{{item.msgUpdateTime}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- page begain -->
+					<nav>
+						<div class="pull-left pagination">共60页第5页</div>
+						<ul class="pagination pull-right">
+							<li class="disabled"><a href="#">&laquo;</a></li>
+							<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">&raquo;</a></li>
+						</ul>
+					</nav>
+					<!-- page end -->
+					<!-- right table end -->
+				</div>
+			</div>
+		</div>
+		<div ng-if="!activeListName">
+			<!-- right table begin -->
+			<div class="col-lg-9">
+				<div class="message-right">
+					<div class="message-title titlenew-bg cb borderb-dashed">
+						<div class="fl padding30">
+							<a href="#" class="btn btn-default delsize"><img
+								src="images/delete3.png" />&nbsp;删除</a> <a href="#"
+								class="btn btn-default delsize"><img
+								src="images/delete3.png" />&nbsp;彻底删除</a>
+						</div>
+					</div>
+					<div class="detail-cont">
+						<div class="detail-cont-sum">
+							<h1 class="detail-cont-title">{{searchData.msgTitle}}</h1>
+							<div class="detail-text cb overflower">
+								<img src="images/message_user.png" class="fl" />
+								<ul class="fl detail-ul">
+									<li>发件人:{{searchData.msgSendUserName}}</li>
+									<li>发送时间:{{searchData.msgUpdateTime}}</li>
+									<li class="datail-ul-lis"><button>ISM</button>
+										<button>审批</button></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="detail-main-text">{{searchData.msgContent}}</div>
+					<div class="width95b center" ng-if="searchData.msgAddr !== ''">
+						<a href={{searchData.msgAddr}}
+							class="editprimaty-btn btn-handle block"
+							style="line-height: 50px; text-align: center; margin: 0 auto; margin-bottom: 20px;">去处理</a>
+					</div>
+				</div>
+			</div>
+			<!-- right table end -->
+			<div ng-if="activeListName">
+				<!-- right table begin -->
+				<div class="col-lg-9">
+					<div class="message-right">
+						<div class="message-title titlenew-bg cb borderb-dashed">
+							<div class="fl padding30">
+								<a href="#" class="btn btn-default delsize"><img
+									src="images/delete3.png" />&nbsp;删除</a> <a href="#"
+									class="btn btn-default delsize"><img
+									src="images/delete3.png" />&nbsp;彻底删除</a>
+							</div>
+						</div>
+						<div class="detail-cont">
+							<div class="detail-cont-sum">
+								<h1 class="detail-cont-title">{{searchData.msgTitle}}</h1>
+								<div class="detail-text cb overflower">
+									<img src="images/message_user.png" class="fl" />
+									<ul class="fl detail-ul">
+										<li>发件人:{{searchData.msgSendUserName}}</li>
+										<li>发送时间:{{searchData.msgUpdateTime}}</li>
+										<li>查看时间:{{searchData.msgRcvTime}}</li>
+										<li>处理时间:</li>
+										<li class="datail-ul-lis"><button>ISM</button>
+											<button>审批</button></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="detail-main-text">{{searchData.msgContent}}</div>
+						<div class="width95b center">
+							<button class="editprimaty-btn btn-handle ">去处理</button>
+						</div>
+					</div>
+				</div>
+				<!-- right end -->
+			</div>
+		</div>
+		<div ng-include="'../pgy-web-1.0/ui/messagealert.html'"></div>
+		<div ng-include="'../pgy-web-1.0/ui/publicAlert.html'"></div>
+	</div>
+</div>

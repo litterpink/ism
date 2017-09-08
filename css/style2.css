@@ -1,0 +1,329 @@
+/*reset*/
+th{
+	text-align: center;
+}
+th,td{
+	border-width:1px !important;
+	vertical-align: middle !important;
+}
+
+label,b{
+	font-weight:normal;
+}
+
+button,input,a{
+    outline:none !important;
+}
+
+
+/*公共样式*/
+
+.clearfix:after {
+	content: "\200B";
+	display: block;
+	height: 0;
+	clear: both;
+}
+
+.clearfix {
+	*zoom: 1;
+}
+
+.flow {
+	overflow: hidden;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.ellipsis {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.radius3 {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.radius5 {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.btn-info{
+	background: #3bafda;
+	border: 1px solid #268ac9;
+}
+.btn.disabled,.btn[disabled],fieldset[disabled] .btn{
+	opacity: 1;
+}
+
+
+select.form-control{
+	padding:6px 8px;
+}
+
+table thead{
+	background: #ececec;
+	
+}
+
+table td,table th{
+	text-align: left !important;
+	padding:5px 15px !important;
+}
+
+table tbody tr:nth-child(even){
+	background: #f9f9f9;
+}
+
+table thead th{
+	color:#888;
+}
+
+td>.btn{
+	padding:3px 5px;
+	margin-right:5px;
+}
+
+td>.btn:focus{
+	color:inherit;
+}
+
+.table{
+	margin-bottom: 0;
+}
+
+.tab-menu li a,:before,:after,.sys-menu li span,.user-setting p,.user-menu,.user-menu li a,.sys-setting a,.sys-setting span,.btn-info,.btn-cancel,.btn-default,.pagination a,.close{
+	-webkit-transition:all .5s ease-in-out;
+	transition:all .5s ease-in-out;
+}
+
+
+body{
+	overflow: hidden;
+}
+
+.loading{
+	font-size:30px;
+	margin-top:250px;
+	color:#3bafda;
+}
+
+/*头部-header*/
+.header{
+	background: #2e313d;
+	height:50px;
+}
+
+.main-title{
+	color:#fff;
+	line-height: 30px;
+	line-height: 50px;
+	width:180px;
+	padding-left:18px;
+}
+
+/*头部菜单*/
+.tab-menu li{
+	height:50px;
+	line-height:50px;
+}
+
+.tab-menu li a{
+	display:inline-block;
+	padding:0 20px;
+	color:#f0f0f0;
+	position: relative;
+}
+
+.tab-menu li a:before{
+	content:"";
+	position: absolute;
+	left:0;
+	height:12px;
+	top:19px;
+	border-left:solid 1px #ddd;
+}
+
+.tab-menu li:first-child a:before{
+	border:none;
+}
+
+.tab-menu li:hover a,.tab-menu li.active a{
+	color: #3bafda;
+}
+
+
+/*用户/系统设置*/
+
+.user-info,.sys-setting a{
+	line-height:50px;
+	padding:0 20px;
+	color:#f0f0f0;
+	cursor:pointer;
+}
+
+.sys-setting a{
+	display: block;
+}
+
+.sys-setting span{
+	line-height:40px;
+	color:#f0f0f0;
+}
+
+.user-info .caret{
+	margin-left: 5px;
+}
+
+
+.user-setting:hover p,.sys-setting:hover a,.sys-setting:hover span{
+	background:#373d41;
+	color:#fff;
+}
+
+.user-setting{
+	position: relative;
+}
+
+.user-menu{
+	position: absolute;
+	width:130px;
+	background:#fff;
+	top:47px;
+	left:50%;
+	margin-left:-65px;
+	z-index: 999;
+	-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	border-top:3px solid #3bafda;
+	opacity: 0;
+	visibility: hidden;
+}
+
+
+.user-menu li a{
+	display: block;
+	line-height:40px;
+	text-align:center;
+	border-bottom:1px solid #eee;
+	color:#333;
+}
+
+.user-menu li:hover a{
+	color:#3bafda;
+}
+
+.user-setting:hover .user-menu{
+	opacity: 1;
+	visibility: visible;
+}
+
+
+/*左侧栏-sidebar*/
+
+.sidebar{
+	width: 180px;
+	background: #333744;
+	position:absolute;
+	top:50px;
+	bottom:0;
+	left:0;
+	z-index: 999;
+	overflow-x:hidden;
+}
+
+.sys-menu{
+	margin-top:40px;
+}
+
+.sys-menu li{
+	margin-bottom:15px;
+}
+
+.sys-menu li a{
+	display: block;
+	color:#f0f0f0;
+	line-height:40px;
+	position: relative;
+	z-index: 9;
+	overflow: hidden;
+}
+
+.sys-menu .menu-icon{
+   width:50px;
+}
+
+.sys-menu li .menu-icon{
+	color: #aeb9c2;
+}
+
+.sys-menu li a:after{
+   content:"";
+   position: absolute;
+   left:0;
+   right:100%;
+   height:100%;
+   background:#42485B;
+   z-index: -1;
+}
+
+.sys-menu li:hover span,.sys-menu li.active span{
+	color:#fff;
+}
+
+.sys-menu li:hover a:after,.sys-menu li.active a:after{
+	 right:0;
+}
+
+
+/*右侧内容-content-main*/
+.content-main{
+	position:absolute;
+	left:180px;
+	top:50px;
+	right:0;
+	bottom:0;
+	overflow-y:auto;
+	padding:5px;
+}
+
+
+/*提交/取消按钮*/
+
+.btn-section .btn{
+	padding:8px 40px !important;
+	margin-left:20px;
+}
+
+.btn-cancel {
+	color: #3bafda;
+	border:1px solid #268ac9;
+	background: #fff;
+	padding: 6px 20px;
+}
+
+
+.btn-info:hover,.btn-default:hover,.btn-save:hover,.btn-save:active,.btn-cancel:hover,.btn-cancel:active{
+	color: #fff;
+	background-color: #60c2e6;
+	border-color:#37a8d2;
+}
+
+
+[class^="icon-"]:before, [class*=" icon-"]:before,.fanew:before,.glyphicon:before{
+	-webkit-transition:none;
+	transition:none;
+}
+
+

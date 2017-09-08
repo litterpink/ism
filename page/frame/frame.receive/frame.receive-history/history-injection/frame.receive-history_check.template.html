@@ -1,0 +1,108 @@
+﻿<setpagetitlerow thetitle="查看接收"></setpagetitlerow>
+<div class="flex-v right-content" ng-show="!ajaxing">
+	<div class="title-bg ">
+		<div class="nav-width">
+			我的接收&nbsp;/&nbsp;<span>查看接收</span>
+		</div>
+	</div>
+	<div class="right-margin">
+		
+		<div class="cb"></div>
+		<div class="divbottom10  paddingtop30">
+			<div class="divbottom10 border-dotted paddingtop30">
+			<div>
+				申请人：<input class="iptnone" type="text" readonly ng-model="record.updateUserName" />
+			</div>
+			<div>
+				申请部门：<input class="iptnone" type="text" readonly
+					ng-model="depart.departName" />
+			</div>
+			<div>
+				申请时间：<input class="iptnone" type="text" readonly
+					ng-model="record.updateTime" />
+			</div>
+			<div>
+				申请名称：<input class="iptnone" type="text" readonly
+					ng-model="record.title" />
+			</div>
+			<div>
+				接收标题：<input class="iptnone" type="text" readonly
+					ng-model="record.title" />
+			</div>
+			<div>
+				发送人：<input class="iptnone" type="text" readonly
+					ng-model="record.updateUserName" />
+			</div>
+			<div>
+				意见结果：<input class="iptnone" type="text" readonly
+					ng-model='logDO.isRecived' />
+			</div>
+			<div>
+				意见内容：<input class="iptnone" type="text" readonly
+					ng-model="logDO.receivedComment" />
+			</div>
+		</div>
+		<div  id="nrsq">
+				<h1 class="detail-title">申请内容</h1>
+				<table class="table table-bordered right-tablebg padding-none">
+					<tr ng-repeat="col in cols">
+						<td ng-if="col.isMultiLine=='N'">
+							<table style="width: 100%;">
+								<tr style="height: 60px;">
+									<th class="col-lg-2 table-left-bg">{{col.colName}}</th>
+									<td ng-if="!col.dictItem" class="paddinglr10"><input
+										class="iptnone" type="text" disabled ng-model="col.vlue"
+										ng-if="col.colType!='boolean'" /> <input type="checkbox"
+										disabled checked 
+										ng-if="col.colType=='boolean' && col.vlue=='true'" /> <input
+										type="checkbox" disabled 
+										ng-if="col.colType=='boolean' && col.vlue==''" /></td>
+									<td ng-show="col.dictItem"><label
+										ng-repeat="dict in col.dicts">&nbsp;&nbsp;{{dict.keyName}}<input
+											class="form-control"  ng-if=" dict.vType== 'text'" disabled
+											ng-model="dict.vlue"/><span
+											aabb-cc="dict.vlue" ng-show="dict.vType=='boolean'" disabled></span>
+											&nbsp;&nbsp;&nbsp;<input ng-if="dict.vType=='number'" type="radio"
+											ng-model="dict.vlue" value="{{dict.keyName}}" disabled />
+									</label></td>
+								</tr>
+							</table>
+						</td>
+						<td ng-if="col.isMultiLine=='Y'">
+							<table style="width:100%;">
+								<tr>
+									<th colspan="{{col.subCols.length}}">{{col.colName}}</th>
+								</tr>
+								<tr ng-if="col.dictItem!=null && col.dictItem!=''">
+									<th>{{col.colName}}</th>
+									<td><label ng-repeat="dict in col.dicts"> <input
+											class="iptnone" ng-if="dict.vType=='text'" disabled
+											ng-model="dict.vlue" type="text" /> <input
+											ng-if="dict.vType=='boolean'" ng-model="dict.vlue"
+											type="checkbox" disabled> <input
+											ng-if="dict.vType=='number'" ng-model="dict.vlue"
+											type="radio" value="{{dict.keyName}}" disabled />
+											{{dict.keyName}}
+									</label></td>
+								</tr>
+								<tr>
+									<td ng-repeat="subCol in col.subCols">{{subCol.colName}}</td>
+								</tr>
+								<tr ng-repeat="subVlue in col.subVlues">
+									<td ng-repeat="vlue in subVlue"><input type="text"
+										disabled ng-model="vlue.vlue" ng-if="vlue.colType!='boolean'" />
+										<input type="checkbox" disabled checked
+										ng-if="vlue.colType=='boolean' && vlue.vlue=='true'" /> <input
+										type="checkbox" disabled
+										ng-if="vlue.colType=='boolean' && vlue.vlue==''" /></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</div>
+		
+		</div>
+	</div>
+</div>
+

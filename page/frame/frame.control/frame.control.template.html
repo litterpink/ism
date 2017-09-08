@@ -1,0 +1,108 @@
+<setpagetitlerow thetitle="工作台"></setpagetitlerow>
+<div class="flex-v right-content" ng-show="getData">
+	<!--  
+ 	<div class="title">
+   		<span>工作台</span>
+    </div>
+-->
+	<!--   为了备份 上线之前 可删除
+  		<div class="col-lg-6">
+  			<div class="main-content">
+  				<div>我的申请:</div>
+  				<a href="#/frame/approve-my_apply">&nbsp;审批中({{myApplysResult0}})&nbsp;&nbsp;同意({{myApplysResult1}})&nbsp;&nbsp;不同意({{myApplysResult2}})</a>
+  			</div>
+  		</div>
+  		<div class="col-lg-6">
+  			<div class="main-content">
+  				<div>我的审批:</div>
+  				<a href="#/frame/approve-my_approve">&nbsp;待审批({{myApproves1}})&nbsp;&nbsp;已审批({{myApproves0}})</a>
+  			</div>
+</div>
+
+</div>
+-->
+	<div class="margin-lr30 margin-top48" >
+		<div class="col-lg-4 control-myapply">
+			<a href="#/frame/approve-my_apply">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						我的申请<span class="fanew fanew-enter-other fanew-enter-icon fr"></span>
+					</div>
+					<div class="panel-body">
+						<p class="myapply-left fl">
+							<span class="fanew fanew-myapply-other fanew-myapply-icon"></span>
+						</p>
+						<div class="myapply-right fr">
+							<p>审批中</p>
+							<h1>{{myApplysResult0}}</h1>
+							<div>
+								同意<span>{{myApplysResult1}}</span>&nbsp;&nbsp;&nbsp;不同意<span>{{myApplysResult2}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="col-lg-4 control-myexamine">
+			<a href="#/frame/approve-my_approve">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						我的审批 <span class="fanew fanew-enter-other fanew-enter-icon fr"></span>
+					</div>
+					<div class="panel-body">
+						<p class="myexamine-left fl">
+							<span class="fanew fanew-myexamine-other fanew-myexamine-icon"></span>
+						</p>
+						<div class="myexamine-right fr">
+							<p>待审批</p>
+							<h1>{{myApproves1}}</h1>
+							<div>
+								已审批<span>{{myApproves0}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="col-lg-4 control-mymessage">
+			<a href="#/frame/my-?name=未读">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						我的消息 <span class="fanew fanew-enter-other fanew-enter-icon fr"></span>
+					</div>
+					<div class="panel-body">
+						<p class="mymessage-left fl">
+							<span class="fanew fanew-mymessage-other fanew-mymessage-icon"></span>
+						</p>
+						<div class="mymessage-right fr">
+							<p>未读消息</p>
+							<h1>{{myUnReadMessageResult}}</h1>
+							<div id="mymessage-cont">请查看详情</div>
+						</div>
+					</div>
+				</div>
+		</div>
+		</a>
+	</div>
+	<div  class="margin-lr30 margin-top20" >
+		<div class="col-lg-4 control-sendee">
+			<a href="#/frame/receive-receive">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						我的接收<span class="fanew fanew-enter-other fanew-enter-icon fr"></span>
+					</div>
+					<div class="panel-body">
+						<p class="mymessage-left fl">
+							<span class="fanew fanew-mymessage-other fanew-mymessage-icon"></span>
+						</p>
+						<div class="mymessage-right fr">
+							<p>接收消息</p>
+							<h1>{{myRecived}}</h1>
+							<div id="mymessage-cont">请查看您的接收消息</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,9 @@
+<div class="flex-v right-content" ng-show="!ajaxing">
+	<div class="topbutton">
+		<div ng-click="clickItem(item)" ng-repeat="item in list" ng-show="list[0].data[0].list[$index]"
+			 class="tn pull-left {{item==active && 'btn-info' || 'cancel'}} btn-size2">{{item.name}}</div>
+	</div>
+	<div class="margintop-sum right-sumbg min-vh-80 paddingtb margin0 auto-directive" compile-text="<div {{active.directive}} user-data=userData></div>" user-data="list">
+	</div>
+</div>
+

@@ -1,0 +1,51 @@
+<div class="modal-content">
+	<div parent-dragable=3 class="modal-header modal-primary">
+		<button type="button" class="close" data-dismiss="modal">
+			<span ng-click="cancel()">×</span><span class="sr-only">Close</span>
+		</button>
+		<h4 class="modal-title">编辑职务</h4>
+	</div>
+	<form novalidate name="myForm" ng-submit="save()">
+		<div class="modal-body">
+			<div class="new-post">
+				<div class="form-group ">
+					<label for=""><span class="required">*</span>职务名称</label>
+					<input required ng-maxlength="15" name="officer" type="text" class="form-control" ng-model="data.officer">
+					<p class="required-tip" ng-if="myForm.officer.$invalid && myForm.officer.$dirty">名称不能超过15个字</p>
+				</div>
+
+				<div class="form-group clearfix">
+					<label class="block" for=""><span class="required">*</span>所在部门</label>
+					<select class="form-control fl short-select" name="department">
+						<option value="">请选择部门</option>
+						<option value="">总经办</option>
+						<option value="">行政部</option>
+						<option value="">财务部</option>
+						<option value="">技术部</option>
+						<option value="">后勤部</option>
+					</select>
+					<a ng-click="addDepartment($event)" class="btn btn-info fr">添加部门</a>
+				</div>
+
+				<div class="form-group">
+					<label for=""><span class="required">*</span>公司角色</label>
+					<select class="form-control" name="companyRole">
+						<option value="管理者">管理者</option>
+						<option value="普通职员">普通职员</option>
+					</select>
+				</div>
+
+				<div class="form-group ">
+					<label for=""><span class="required">*</span>是否船员</label>
+					<select class="form-control" name="sailor" ng-model="data.isLand">
+						<option ng-repeat="x in optionArr" value="{{x.vlue}}">{{x.name}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer btn-section text-right">
+			<input type="submit" class="btn btn-info btn-save" ng-disabled="myForm.$invalid">
+			<button type="button" class="btn btn-default btn-cancel" ng-click="cancel()">取消</button>
+		</div>
+	</form>
+</div>

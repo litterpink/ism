@@ -1,0 +1,16 @@
+<setpagetitlerow thetitle="新建申请"></setpagetitlerow>
+<div class="flex-v right-content" ng-show="1">
+	<div class="title-bg">
+		<div class="nav-width">
+			&nbsp;&nbsp;我的申请&nbsp;/&nbsp;<span>新建申请</span>
+		</div>
+	</div>
+	<div class="right-sumbg">
+		<div class="titlenew titlenew-bg">
+			<span class="titlenew-span">新建申请</span>
+		</div>
+		<div class="newApproveCont col-lg-12">
+			<div ng-repeat="item in newApproveArr" class="btn-newapprove  col-lg-2"><a class="btn-approve"   href="#/frame/approve-detail?wkId={{item.v}}"><p style="display:none;" ng-bind="item.text"></p>{{item.text}}</a></div>
+		</div>
+	</div>
+</div>

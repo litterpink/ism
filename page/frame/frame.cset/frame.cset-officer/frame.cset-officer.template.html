@@ -1,0 +1,47 @@
+﻿<div class="company-post">
+	<div class="container-fluid">
+		<div class="operation-section clearfix">
+			<button ng-click="addManagement($event)" class="btn btn-info pull-right"><i class="icon-plus"></i> 添加职务</button>
+			<div class="search pull-right">
+				<form action="">
+					<input type="submit" class="btn btn-info pull-right search-btn" id="searchBtn" value="搜索" />
+					<div class="search-field  pull-right"><span class="glyphicon glyphicon-search form-control-feedback" id="searchIcons"></span>
+						<input class="form-control" type="text" placeholder="请输入关键字" />
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--表格数据-->
+		<div class="table-responsive table-staff" id="contentScroll" ng-show="getData">
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>职务名称</th>
+						<th>所在部门</th>
+						<th>公司角色</th>
+						<th>是否船员</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in listDataUse">
+						<td>{{item.seq}}</td>
+						<td>{{item.officer}}</td>
+						<td>{{item.department}}</td>
+						<td>{{item.companyRole}}</td>
+						<td>{{item.isLand==1?'是':'否'}}</td>
+						<td>
+							<a href="" class="btn btn-default" ng-click="eidtManagement($index)"><span class="icon-edit"></span> 编辑</a>
+							<a class="btn btn-default" ng-click="del(item.officerId,$event)"><span class="icon-trash"></span> 删除</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!--分页-->
+		<div class="text-right page" ng-show="getData">
+			<ul uib-pagination ng-change="pageChanged()" total-items="bigTotalItems" ng-model="bigCurrentPage" previous-text="上一页" next-text="下一页" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></ul>
+		</div>
+	</div>
+</div>

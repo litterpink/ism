@@ -1,0 +1,66 @@
+﻿<div class="company-information">
+	<div class="container-fluid">
+		<div class="operation-section text-right">
+			<button type="button" class="btn btn-info btn-edit" ng-click="clickedInformation()" ng-hide="isDisabled.distrue">
+  		 <span class="glyphicon glyphicon-pencil"></span> 编辑</button>
+		</div>
+		<form class="company-information" id="companyInformation" novalidate name="myForm" ng-show="getData">
+			<fieldset ng-disabled="isDisabled.disfalse">
+				<ul class="company-info-list row">
+					<li class="col-xs-12 col-md-6">
+						<label for=""><span class="required">*</span> 公司名称：</label>
+						<input class="form-control" required type="text" ng-model="company.corpName" name="corpName" />
+						<p class="required-tip" ng-if="!myForm.corpName.$valid">公司名称不能为空</p>
+					</li>
+					<li class="col-xs-12 col-md-6">
+						<label for="">公司简介：</label>
+						<input class="form-control" type="text" ng-model="company.shortName" />
+					</li>
+					<li class="col-xs-12 col-md-6">
+						<label for=""><span class="required">*</span> 企业电话：</label>
+						<input class="form-control" required ng-pattern="/^((0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/" type="text" ng-model="company.tel" name="tel" />
+						<p class="required-tip" ng-if="!myForm.tel.$valid">
+							企业电话未正确输入
+						</p>
+					</li>
+					<li class="col-xs-12 col-md-6">
+						<label for=""><span class="required">*</span> 企业类型：</label>
+						<input class="form-control" required type="text" ng-model="company.corpType" name="corpType" />
+						<p class="required-tip" ng-if="!myForm.corpType.$valid">
+							企业类型不能为空
+						</p>
+					</li>
+					<li class="col-xs-12 col-md-6">
+						<label for="">所属行业：</label>
+						<input class="form-control" type="text" ng-model="company.business" />
+					</li>
+					<li class="col-xs-12 col-md-6">
+						<label for=""><span class="required">*</span> 所在地区：</label>
+						<input class="form-control " required type="text" ng-model="company.area" name="area" />
+						<p class="required-tip" ng-if="!myForm.area.$valid">
+							所在地区不能为空
+						</p>
+					</li>
+					<li class="col-xs-12 col-md-6">
+						<label for="">企业地址：</label>
+						<input class="form-control" type="text" ng-model="company.addr" />
+					</li>
+					<li class="col-xs-12 col-md-6">
+						<label for="">邮政编码：</label>
+						<input class="form-control " type="text" ng-model="company.post" />
+					</li>
+					<li class="col-xs-12 col-md-6">
+						<label for="">企业传真：</label>
+						<input class="form-control " type="text" ng-model="company.fax" />
+					</li>
+					<li class="col-xs-12 col-md-6">
+						<label for="">企业网址：</label>
+						<input class="form-control " type="text" ng-model="company.web" />
+					</li>
+				</ul>
+			</fieldset>
+			<div ng-show="remindtext" class="{{remindtext =='成功保存' && 'saveremindsucc' || 'savereminderr'}} pull-right">{{remindtext}}</div>
+			<p class="text-right btn-section" ng-show="isSubmitShow.show"><button ng-click="save()" class="btn btn-info btn-save">保存</button><button ng-click="cancelBtnIformation()" class="btn btn-cancel">取消</button></p>
+		</form>
+	</div>
+</div>

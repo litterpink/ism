@@ -1,0 +1,122 @@
+<div class="company-staff">
+	<div class="menu-tree">
+		<script type="text/ng-template" id="angularTreeTemplate">
+			<div ui-tree-handle class="tree-node tree-node-content angular-ui-tree-handle">
+				<a ng-if="item.children && item.children.length > 0" data-nodrag ng-click="toggle(this)">
+					<span class="icon" ng-class="{'arrow-close': collapsed, 'arrow-open': !collapsed }"></span>
+				</a>
+				<span ng-show="!item.isEdit" class="tree-nodeName" ng-click="showContent(item)">
+					{{ item.name }}{{item.name.length > 10 ? '...' : ''}}  
+				</span>
+			</div>
+			<ol ui-tree-nodes="" ng-model="item.children" ng-class="{hidden: collapsed}">
+				<li ng-repeat="item in item.children" ui-tree-node ng-include="'angularTreeTemplate'"> </li>
+			</ol>
+		</script>
+		<div ui-tree="treeOptions" id="tree-root" data-nodrag>
+			<ol ui-tree-nodes ng-model="angularTreeList">
+				<li ng-repeat="item in angularTreeList" ui-tree-node ng-include="'angularTreeTemplate'"> </li>
+			</ol>
+		</div>
+		<!--<div ng-show="remindtext" class="col-lg-9  pull-left">
+			<span class="pull-right {{remindtext =='成功保存' && 'savedepartsucc' || 'savedeparterr'}}">{{remindtext}}</span>
+		</div>
+		<div class="col-lg-9  pull-left submit-buton margin-bottom42">
+			<input ng-click="savedepart()" type="submit" class="btn pull-right save-btn btn-size1" value="保存">
+		</div>-->
+	</div>
+	<div class="staff-wrapper">
+		<div class="container-fluid">
+			<div class="department-content">
+				<div class="operation-section clearfix">
+					<button ng-click="addDepartment(item,$event)" class="btn btn-info pull-right"><i class="icon-plus"></i> 添加部门</button>
+				</div>
+				<div class="table-responsive table-department">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>部门名称</th>
+								<th>上级部门</th>
+								<th>部门负责人</th>
+								<th>部门人数</th>
+								<th>部门职责</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{{dataDepart.name}}</td>
+								<td>{{dataDepart.lastDepartment}}</td>
+								<td>{{dataDepart.departmentHeader}}</td>
+								<td>{{dataDepart.memberNum}}</td>
+								<td>{{dataDepart.departmentDuty}}</td>
+								<td>
+									<a href="" class="btn btn-default" ng-click="editDepartment(item)"><span class="icon-edit"></span> 编辑</a>
+									<a class="btn btn-default" ng-click="del(item.officerId,$event)"><span class="icon-trash"></span> 删除</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="staff-content">
+				<div class="operation-section clearfix">
+					<button ng-click="addUser(item,$event)" class="btn btn-info pull-right"><i class="icon-plus"></i> 新增员工</button>
+					<div class="search pull-right">
+						<form action="">
+							<input type="submit" class="btn btn-info pull-right search-btn" id="searchBtn" value="搜索" ng-click="search()" />
+							<div class="search-field  pull-right"><span class="glyphicon glyphicon-search form-control-feedback" id="searchIcons"></span>
+								<input class="form-control" type="text" placeholder="请输入关键字" ng-model="searchContext"/>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="table-responsive table-department">
+					<table class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th>用户名</th>
+								<th>所在船舶</th>
+								<th>当前部门</th>
+								<th>当前职务</th>
+								<th>公司角色</th>
+								<th>系统角色</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in listData">
+								<td ng-bind="item.userId" class="hide"></td>
+								<td>{{item.userName}}</td>
+								<td>{{item.shipName}}</td>
+								<td ng-repeat="i in item.departmentName">
+									<span>
+										{{i}}
+										<a href="" class="remark_r" ng-if="dataDepartment.name" ng-click="delDepartment($index)">x</a>
+									</span>
+								</td>
+								<td>
+									<span ng-repeat="i in item.offerName">
+										{{i}}
+										<a href="" class="remark_r" ng-if="i" ng-click="delsprbd($index)">x</a><br/>
+									</span>
+								</td>
+								<td>{{item.companyRole}}</td>
+								<td>{{item.sysRole}}</td>
+								<td>
+									<span class="btn btn-default" ng-click="checkspr($index,$event)"><i class="icon-plus"></i> 增加职务</span>
+									<span class="btn btn-default" ng-click="resetPwd(item.userId,$event)"><i class="icon-edit"></i> 重置密码</span>
+									<span class="btn btn-default" ng-click="remove(item.userId,$event)"><i class="icon-trash"></i> 删除</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!--分页-->
+				<div class="text-right page" ng-show="getData">
+					<ul uib-pagination ng-change="pageChanged()" total-items="bigTotalItems" ng-model="bigCurrentPage" previous-text="上一页" next-text="下一页" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true" rotate="false"></ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

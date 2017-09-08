@@ -1,0 +1,19 @@
+.border-1-4{
+	border: solid 1px;
+    border-radius: 4px;
+}
+.marginright-25{
+	margin-right: 25%;
+}
+
+.margin0{
+	margin-top: 0%;
+}
+.topbutton{
+	width: 96%;
+    margin: 15px auto 0 auto;
+}
+
+.border-s-1-c{
+	border: solid 1px #ccc !important;
+}

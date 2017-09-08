@@ -1,0 +1,44 @@
+<div class="modal-content">
+	<div parent-dragable=3 class="modal-header modal-primary">
+		<button type="button" class="close" data-dismiss="modal">
+			<span ng-click="cancel()">×</span><span class="sr-only">Close</span>
+		</button>
+		<h4 class="modal-title">编辑部门</h4>
+	</div>
+	<form novalidate name="myForm" ng-submit="save()">
+		<div class="modal-body">
+			<div class="new-post">
+				<div class="row" id="addDepartment">
+					<div class="col-sm-6 form-group">
+						<label for=""><span class="required">*</span>部门名称</label>
+						<input required ng-maxlength="15" name="departmentName" type="text" class="form-control" ng-model="name">
+						<p class="required-tip" ng-if="myForm.officer.$invalid && myForm.officer.$dirty">名称不能超过15个字</p>
+					</div>
+
+					<div class="col-sm-6 form-group">
+						<label for=""><span class="required">*</span>上级部门</label>
+						<select ng-model="lastDepartment" class="form-control" name="lastDepartment" ng-options="x.name for x in Department">
+							<option value="">请选择上级部门</option>
+						</select>
+					</div>
+					<div class="col-sm-6 form-group">
+						<label for="">部门负责人</label>
+						<input class="form-control" name="departmentHeader" type="text" ng-model="departmentHeader"/>
+					</div>
+					<div class="col-sm-6 form-group">
+						<label for="">部门人数</label>
+						<input class="form-control" name="memberNum" type="text" ng-model="memberNum"/>
+					</div>
+					<div class="col-sm-12 form-group ">
+						<label for="">部门职责</label>
+						<textarea name="departmentDuty" class="form-control" rows="3" cols="" placeholder="请简要描述部门职责。。。"  ng-model="departmentDuty"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer btn-section text-right">
+			<input type="submit" class="btn btn-info btn-save" ng-disabled="myForm.$invalid">
+			<button type="button" class="btn btn-default btn-cancel" ng-click="cancel()">取消</button>
+		</div>
+	</form>
+</div>

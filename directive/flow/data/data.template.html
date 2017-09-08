@@ -1,0 +1,164 @@
+<style>
+	.panel-body{min-height:500px;}
+	.width100{width:100px;}
+	
+	#myTabContent .row{height:50px;line-height:50px;}
+	.overlight{border:1px dashed red; padding:5px;}
+	
+</style>	
+
+<!-- ng-mouseleave="mouseLeave($event)" ng-mouseover="mouseOver($event)" -->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-9 cell-border">
+			<div class="panel panel-default">
+			  <div class="panel-heading ">
+				<div class="row">
+					<div class="col-md-10">添加右侧控件生成表单</div>
+					<div class="col-md-2"><input type="button" ng-click="save()" class="btn btn-default" value="保存"/></div>
+				</div>
+			  </div>
+			  <div class="panel-body" ng-click="removeH()" >
+					<form class="form-horizontal">
+						<div class="form-group"  ng-click="click($index,$event)" ng-repeat="x in formControls">
+							<label class="col-sm-2 control-label">
+								<span ng-show="x.required" style="color:red">*</span>
+								{{x.text}}
+							</label>
+							<div class="col-sm-8">
+							  <div ng-if="x.type == 'show-input'" show-input inpoutdata="x" ></div>
+							  <div ng-if="x.type == 'show-text'" show-text textdata="x"></div>
+							  <div ng-if="x.type == 'show-check'" show-check checkdatas="x"></div>
+							  <div ng-if="x.type == 'show-checks'" show-checks checksdata="x"></div>
+							  <div ng-if="x.type == 'show-select'" show-select selectdatas="x"></div>
+							  <div ng-if="x.type == 'show-number'" show-number numberdata="x"></div>
+							  <div ng-if="x.type == 'date-picker'" date-picker dt="x.format"></div> 
+							  <div ng-if="x.type == 'show-table'" show-table tabledata="x"></div>
+							</div>
+							<div class="col-sm-2">
+							  <button type="button" ng-click="remove($index,$event)" class="btn btn-primary">移除</button>
+							</div>
+						</div>
+					</form> 
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-3 cell-border">		
+			<ul id="myTab" class="nav nav-tabs">
+				<li >
+					<a ng-click="tabShow(true)" data-toggle="tab" class="{{tbShow && 'btn-info' || 'cancel'}}">添加控件</a>
+				</li>
+				<li><a ng-click="tabShow(false)" data-toggle="tab" class="{{tbShow && 'cancel' || 'btn-info'}}">编辑控件</a></li>
+			</ul>
+			<div  class="tab-content">
+				<div id="myTabContent" ng-show="tbShow" class="tab-pane fade in active" >
+					<div class="row">
+						<div class="col-sm-6">
+							<button type="button" ng-click="addControl(1)" class="btn btn-info width100">单行文本</button>
+						</div>
+						<div class="col-sm-6">
+							<button type="button" ng-click="addControl(2)" class="btn btn-info width100">多行文本</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<button type="button" ng-click="addControl(3)" class="btn btn-info width100">单选框</button>
+						</div>
+						<div class="col-sm-6">
+							<button type="button" ng-click="addControl(4)" class="btn btn-info width100">复选框</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<button type="button" ng-click="addControl(5)" class="btn btn-info width100">下拉菜单</button>
+						</div>
+						<div class="col-sm-6">
+							<button type="button" ng-click="addControl(6)" class="btn btn-info width100">日期</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<button type="button" ng-click="addControl(7)" class="btn btn-info width100">数字</button>
+						</div>
+						<div class="col-sm-6">
+							<button type="button" ng-click="addControl(8)" class="btn btn-info width100">表格</button>
+						</div>
+					</div>
+				</div>
+				<div ng-show="!tbShow" class="tab-pane fade in active">
+					<!--文本组件-->
+					<p ng-show="current.type == 'show-input' || current.type == 'show-text' ">
+						<label>
+							标题：<input type="text" ng-model="current.text"  class="form-control" placeHolder="文本"/>
+						</label>
+						<label>
+							提示文字：<input type="text" ng-model="current.placeHolder"   class="form-control" placeHolder="提示文字"/>
+						</label>
+						<label>
+							是否必填：<input type="checkbox" ng-model="current.required"/>
+						</label>
+						<label>
+							最大长度：<input type="number" class="form-control" ng-model="current.maxLength"/>
+						</label>
+						<label>
+							最小长度：<input type="number" class="form-control" ng-model="current.minLength"/>
+						</label>
+						<label>
+							错误提示：<input type="text" class="form-control" ng-model="current.errorText" placeHolder="错误提示文字" />
+						</label>
+					</p>
+					<!--单选、多选、复选、下拉菜单组件-->
+					<p ng-show="current.type == 'show-check' || current.type == 'show-checks' || current.type == 'show-select' ">
+						<label>
+							标题：<input type="text" ng-model="current.text"  class="form-control" placeHolder="文本"/>
+						</label>
+						<label>
+							选项设置（请用英文逗号隔开）：<textarea ng-model="current.option" ng-change="changeOption()"   class="form-control" placeHolder="选项设置"></textarea>
+						</label>
+						<label>
+							是否必填：<input type="checkbox" ng-model="current.required"/>
+						</label>						
+					</p>
+					<!--日期组件-->
+					<p ng-show="current.type == 'date-picker'">
+						<label>
+							标题：<input type="text" ng-model="current.text"  class="form-control" placeHolder="日期"/>
+						</label>
+						<label>
+							日期格式设置：<br/>							
+							<!-- <label><input type="radio" ng-model="current.format" value="yyyy-MM-dd HH:mm"/>年-月-日 时:分</label><br/>		 -->
+							<label>年-月-日</label><br/>		
+							<!-- <label><input type="radio" ng-model="current.format" value="yyyy-MM"/>年-月</label> -->
+						</label><br/>
+						<label>
+							是否必填：<input type="checkbox" ng-model="current.required"/>
+						</label>						
+					</p>
+					<!--数字组件-->
+					<p ng-show="current.type == 'show-number'">
+						<label>
+							标题：<input type="text" ng-model="current.text"  class="form-control" placeHolder="文本"/>
+						</label>
+						<label>
+							提示文字：<input type="text" ng-model="current.placeHolder"   class="form-control" placeHolder="提示文字"/>
+						</label>
+						<label>
+							是否必填：<input type="checkbox" ng-model="current.required"/>
+						</label>
+					</p>
+					<!--表格组件-->
+					<p ng-show="current.type == 'show-table'">
+						<label>
+							行数：<input type="text" ng-model="current.rows"   class="form-control"  />
+						</label>
+						<label>
+							列数：<input type="text" ng-model="current.cols"   class="form-control"  />
+						</label>
+					</p>
+				</div>				
+			</div>	
+		</div>
+	</div>
+ 
+	 
+</div>

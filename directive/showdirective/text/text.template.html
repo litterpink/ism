@@ -1,0 +1,8 @@
+
+<form name="myForm">
+	<textarea name="jointext" cols=40 rows=4 type="text" placeholder={{type.placeHolder}} ng-maxlength="type.maxLength" ng-minlength="type.minLength" {{type.required}} name="jointext"  ng-model="jointext" class="form-control">
+	</textarea>
+	<div class="errbox" ng-if="myForm.jointext.$invalid && myForm.jointext.$dirty"> 
+		{{type.errorText}}
+	</div>
+</form>

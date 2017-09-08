@@ -1,0 +1,168 @@
+<setpagetitlerow thetitle="新建申请"></setpagetitlerow>
+<div class="flex-v right-content" ng-show="!ajaxing">
+	<div class="title-bg">
+		<div class="nav-width">
+			&nbsp;&nbsp;我的申请&nbsp;/&nbsp; <span>新建申请</span>
+		</div>
+	</div>
+	<div class="right-sumbg">
+		<div class="titlenew titlenew-bg">
+			<span class="titlenew-span">新建申请</span>
+		</div>
+		<form id="form1" class="margintop20 form-horizontal">
+			<div class="col-lg-6 margin-bottom42">
+				<label class="col-lg-12">申请部门：</label>
+				<div class="col-lg-12">
+					<input class="form-control" type="text" readonly=""
+						ng-model="departs" />
+				</div>
+			</div>
+			<div class="col-lg-6 margin-bottom42">
+				<label class="col-lg-12">申请人：</label>
+				<div class="col-lg-12">
+					<input class="form-control" type="text" readonly="" ng-model="user" />
+				</div>
+			</div>
+			<div class="col-lg-6 margin-bottom42">
+				<label class="col-lg-12">流程名称：</label>
+				<div class="col-lg-12">
+					<input class="form-control" type="text" ng-model="flowDefTitle"  placeholder="请输入流程名称" readonly="readonly"/>
+				</div>
+			</div>
+			<div class="col-lg-6 margin-bottom42">
+				<div lines-input="linesInput"></div>
+				<div lines-input="linesInputcb"></div>
+				<!-- 指定人员 -->
+				<div lines-input="personnelAlert"></div>
+				<label class="col-lg-12"><span class="redcolor">*</span>申请名称：</label>
+				<div class="col-lg-12">
+					<input type="text" ng-model="title" placeholder="请输入申请名称"
+						required="" class="form-control" />
+				</div>
+			</div>
+			<div class="col-lg-6 margin-bottom42">
+				<div class="marginleft15">
+					所属船舶： <span ng-if="shipNameCn!=''">{{shipNameCn}}</span> <a
+						ng-if="shipNameCn==''" href="" class="marginleft15"
+						ng-click="selcb()">选择船舶</a>
+				</div>
+			</div>
+			<div class="col-lg-6 margin-bottom42">
+				<label class="col-lg-12">申请内容：<span><a
+						href="javascript:void(0)" ng-click="ck()">参考</a></span></label>
+			</div>
+			<div class="col-lg-12 margin-bottom42">
+				<label class="col-lg-12">指定人员：<span>
+				<span ng-if="recUsers !=''">{{recUsers}}</span>
+				<span ng-if="recUsers ==''">
+				{{personnels}}<a href="javascript:void(0)"  class="redcolor" ng-if="personnels" ng-click="delPersonnel()">x</a>
+				<a	href="javascript:void(0)" ng-click="choicePersonnel()">选择指定人员</a></span></span></label>
+			</div>
+			<div class="col-lg-12">
+				<div class="borderbt">
+					<h1>详细填写</h1>
+				</div>
+			</div>
+			<div class="auto-text-icon cb col-lg-12" ng-show="!ajaxing">
+				<div class="col-lg-12 margintop20">
+					<table class="table table-bordered border-style padding-none"
+						style="width: 100%;">
+						<tbody>
+							<tr ng-repeat="col in cols">
+								<td ng-if="col.isMultiLine=='N'">
+									<table style="width: 100%;">
+										<tbody>
+											<tr
+												ng-if="!col.conditionName || conditions.indexOf(col.conditionName)!=-1">
+												<th class="col-lg-2 table-left-bg"><span ng-if="col.isMust=='Y'" class="redcolor">*</span>{{col.colName}}:</th>
+												<td ng-if="!col.dictItem" class="col-lg-10">
+													<div ng-if="col.triggerName">
+														<dropdown1 class=" ww15em border1" arr="col.triggerName"
+															mode="key,text" value="col.vlue"
+															change="function_onchange(col.colId,col.vlue)"
+															defaults=" --请选择-- "></dropdown1>
+													</div> <input type="text" ng-model="col.vlue"
+													ng-if="!col.triggerName && col.colType=='string'"
+													class="{{col.isMust}}=='Y' ? required : '' form-control-new col-lg-6"  style="width:{{col.colLen*0.5}}%" name="col.colId"/> 
+													<input type="checkbox" ng-model="col.vlue" ng-if="!col.triggerName && col.colType=='boolean'"
+		 											class="col-lg-1" /> <input type="date"
+													ng-model="col.vlue"
+													ng-if="!col.triggerName && col.colType=='date'"
+													class="form-control-new col-lg-6"  style="width:35%"/> <a
+													href="javascript:void(0)"
+													ng-click="autoFill(col.vlue,col.callAddr)"
+													ng-if="col.callAddr" class="auto-style">自动填充</a>
+												</td>
+												<td ng-if="col.dictItem"><label
+													ng-repeat="dict in col.dicts"> {{dict.keyName}} <input
+														ng-if="dict.vType=='boolean'" ng-model="dict.vlue"
+														type="checkbox" /> <input
+														ng-if="dict.vType=='number'" ng-model="dict.vlue"
+														type="radio" name="radio{{col.colId}}"
+														value="{{dict.keyName}}" class="form-control-new" />
+												</label></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+								<td
+									ng-if="col.isMultiLine=='Y' && (!col.conditionName || conditions.indexOf(col.conditionName)!=-1)">
+									<table style="width: 100%" class="multiline">
+										<tbody>
+											<tr>
+												<th colspan="{{col.subCols.length-1}}"><b>{{col.colName}}:</b></th>
+												<th ng-if="!col.dictItem"><a href="javascript:void(0)"
+													ng-click="add(col.colId)"><h4 class="add-right">＋</h4></a></th>
+											</tr>
+											<!-- <tr ng-if="col.dictItem">
+							<th>{{col.colName}}</th>
+							<td class="isMulti-td">
+								<label ng-repeat="dict in col.dicts">
+									{{dict.keyName}}
+									<input-box item="col" ng-model="dict.vlue"></input-box> 
+								</label>
+							</td>
+						</tr> -->
+											<tr>
+												<td ng-repeat="subCol in col.subCols">{{subCol.colName}}
+												</td>
+											</tr>
+											<tr ng-repeat="subVlue in col.subVlues" class="isMulti-td">
+												<td ng-repeat="vlue in subVlue"><input type="text"
+													ng-model="vlue.vlue"
+													ng-if="!col.triggerName && col.colType=='string'"
+													class="form-control" /> <input type="checkbox"
+													ng-model="vlue.vlue" ng-if="col.colType=='boolean'"/> <input type="date"
+													ng-model="vlue.vlue" ng-if="col.colType=='date'"
+													class="form-control" /> <!-- 
+								<input type="text" ng-model="vlue.vlue" ng-if="vlue.colType=='string'"/>
+								<input type="checkbox" ng-model="vlue.vlue" ng-if="vlue.colType=='boolean'"/>
+								<input type="date" ng-model="vlue.vlue" ng-if="vlue.colType=='date'" style="width:174px;"/>
+							     --></td>
+												<td ng-if="!col.dictItem" colspan="2"><a
+													href="javascript:void(0)"
+													ng-click="del(col.colId,subVlue[0].seq)"><h4>－</h4></a></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-lg-12  pull-right submit-buton margin-bottom42">
+				<!-- <input type="button" ui-sref="frame.approve-my_apply"
+					class="btn pull-right  btn-size1 cancel" value="取消" />  -->
+				<input type="submit" class="btn pull-right save-btn btn-size1" value="提交" ng-click="submitApperove()"/>
+				<input ng-click="saveLocal()" type="submit"
+					class="btn pull-right save-btn btn-size1" value="保存">
+			</div>
+		</form>
+		<div ng-if="user" class="col-lg-12 cb marginbot20">
+			<span class="border-none col-lg-10">审批流程&nbsp;:&nbsp;<strong>{{approvalProcess}}</strong></span>
+			<input class="border-none col-lg-10" type="text" readonly=""
+				ng-model="signStr" />
+		</div>
+	</div>
+</div>

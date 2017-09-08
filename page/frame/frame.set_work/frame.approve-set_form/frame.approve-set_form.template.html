@@ -1,0 +1,47 @@
+<div class="flex-v right-content">
+	<div class="right-sumbg min-vh-80">
+		<div class="titlenew titlenew-bg">
+			<span class="titlenew-span">流程列表</span>
+			<a href="#frame/approve-set_work">
+				<button type="button" class="btn fr margin-right36 addbtn"
+					ng-click="addUser($event)">
+					<i class="icon-plus"></i> 新增流程
+				</button>
+			</a>
+			<div class="col-lg-4  pull-right posrelative">
+				<span class="glyphicon glyphicon-search form-control-feedback"
+					id="searchIcons"></span> <input type="text"
+					ng-keypress="search(name, $event)" ng-model="name"
+					placeholder="请输入关键字"
+					class="form-control  col-lg-12 height42 padding20" />
+			</div>
+		</div>
+		<div class="tabeleStyle min-height425 text-aligncenter">
+			<table class="table table-hover table-bordered table-striped my-table border-s-1-c">
+				<thead>
+					<tr class="text-aligncenter">
+						<th class="text-aligncenter">流程名称</th>
+						<th class="text-aligncenter">流程内容</th>
+						<th class="text-aligncenter">生效时间</th>
+						<th class="text-aligncenter col-lg-3">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in listData">
+						<td>{{item.name}}</td>
+						<td>{{item.content}}</td>
+						<td>{{item.time}}</td>
+						<td class="selall text-center">
+							<a href="#frame/approve-set_work?id='1'">
+								<span class="btn btn-default" ng-click="checkspr($index,$event)">
+									<i class="icon-edit"></i> 修改
+								</span>
+							</a>
+							<span class="btn btn-default" ng-click="remove($index,$event)"><i class="icon-trash"></i> 删除</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
