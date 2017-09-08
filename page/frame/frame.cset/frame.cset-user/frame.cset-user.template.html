@@ -96,9 +96,9 @@
 									</span>
 								</td>
 								<td>
-									<span ng-repeat="i in item.offerName">
+									<span ng-repeat="i in item.handleStr">
 										{{i}}
-										<a href="" class="remark_r" ng-if="i" ng-click="delsprbd($index)">x</a><br/>
+										<a href="" class="remark_r" ng-if="i" ng-click="delsprbd(item,i)">x</a><br/>
 									</span>
 								</td>
 								<td>{{item.companyRole}}</td>

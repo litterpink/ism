@@ -315,13 +315,17 @@
 			$scope.listData[index].handleStr=$scope.listData[index].handleStr.substr(0,$scope.listData[index].handleStr.lastIndexOf(','));
 		}*/
 		// 删除职位2
-		$scope.delsprbd=function(index){
-			var length=$scope.listData[index].departmentHandleStr.handleStr.length;
-			if(length>1){
-				$scope.listData[index].departmentHandleStr.handleStr.pop($scope.listData[index].departmentHandleStr.handleStr)
-				$scope.listData[index].handleStr=$scope.listData[index].handleStr.substr(0,$scope.listData[index].handleStr.lastIndexOf(','));
+		$scope.delsprbd=function(item,i){
+			var index = $scope.listData.indexOf(item);
+			var index2 = $scope.listData[index].handleStr.indexOf(i);
+			if (index2 > -1) {
+				$scope.listData[index].handleStr.splice(index2, 1);
 			}
-			$scope.listData[index].handleStr=$scope.listData[index].handleStr.substr(0,$scope.listData[index].handleStr.lastIndexOf(','));
+			if(!$scope.listData[index].handleStr.length){
+				$scope.listData.splice(index,1)
+			}
+			//console.log($scope.listData[index].handleStr)
+			//$scope.listData[index].handleStr=$scope.listData[index].handleStr.substr(0,$scope.listData[index].handleStr.lastIndexOf(','));
 		}
 
 		// 删除部门
@@ -369,11 +373,11 @@
 		$scope.dataOffer=[
 			{
 				departmentName:"公司",
-				offerName:["职务1","职务2"]
+				handleStr:["职务1","职务2"]
 			},
 			{
 				departmentName:"部门1",
-				offerName:["职务3","职务4"]
+				handleStr:["职务3","职务4"]
 			}
 		];
 		$scope.dataUser=[
@@ -387,7 +391,7 @@
 				companyRole: '管理者',
 				sysRole: '体系用户',
 				departmentName:["公司"],
-				offerName:["职务1"]
+				handleStr:["职务1"]
 			},{
 				id: 2,
 				userId: 2,
@@ -398,7 +402,7 @@
 				companyRole: '管理者',
 				sysRole: '体系用户',
 				departmentName:["部门1"],
-				offerName:["职务3","职务4"]
+				handleStr:["职务3","职务4"]
 			}
 		];
 		$scope.init= function () {
@@ -464,7 +468,7 @@
 						console.log(value);
 						var officeJson={};
 						officeJson.departmentName=value.name;
-						officeJson.offerName=[];
+						officeJson.handleStr=[];
 						$scope.dataOffer.push(officeJson);
 						console.log("插入后的dataOffer值",$scope.dataOffer);
 					},
