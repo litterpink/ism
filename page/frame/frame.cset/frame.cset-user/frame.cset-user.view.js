@@ -292,7 +292,7 @@
 		// 添加职位
 		$scope.checkspr=function(index, event){
 			var appendTo = angular.element( event.currentTarget).parent();
-			popup.officerList( $scope.officerData, appendTo)
+			popup.officerList( $scope.dataOffer[index], appendTo)
 			.result.then(
 				function(value){
 				//不保存
@@ -329,9 +329,9 @@
 		}
 
 		// 删除部门
-		$scope.delDepartment=function(index){
+		/*$scope.delDepartment=function(index){
 			$scope.listData[index].department=$scope.listData[index].department.substr(0,$scope.listData[index].department.lastIndexOf(','));
-		}
+		}*/
 		//船信息
 		$scope.shipData=[
 			{
