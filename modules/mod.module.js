@@ -4,7 +4,7 @@
 	E-mail: lianglf@allhigh.com.cn
 	time: 2017.4.5
 */
-!(function() {
+(function() {
 	var theApp = angular.module('myApp', [
 		'frame',
 		'login',
@@ -27,13 +27,14 @@
 			topMeun: "",
 			leftMeun: ""
 		},
+		company:{},
 		returnUrl: "",
 		topMeunData: [],
 
 		setmeun: function(meunString) {
 			_config.menuData = [];
 			if(_config.userData.extInfo.role == 'Ism-admin' || _config.userData.extInfo.role == 'System_admin') {
-				var powerList = ['1','2', '3', '4','5', '6', '7', '8', '9', '10', '11'];
+				var powerList = ['0','1','2', '3', '4','5', '6', '7', '8', '9', '10', '11'];
 			}
 			if(_config.userData.extInfo.role == 'Ism-user') {
 				var powerList = ['5', '6', '7', '8', '9', '10', '11'];
@@ -41,6 +42,7 @@
 			if(_config.userData.extInfo.role == 'System-admin') {
 				var powerList = ['1'];
 			}
+			//获取当前用户所具有的菜单
 			for(var i = 0; i < _config.menuDataLibrary.length; i++) {
 				for(var j = 0; j < powerList.length; j++) {
 					if(powerList[j] == _config.menuDataLibrary[i].power) {
@@ -57,20 +59,27 @@
 			}
 			_config.setTopMeun(_config.menuState.leftMeun);
 			_config.menuState.topMeun = (meunString || "").substr((meunString || "").indexOf('-') + 1);
-			// console.log(_config.menuState);
 		},
 
 		setTopMeun: function(meun) {
 			for(var i = 0; i < _config.menuData.length; i++) {
 				if(_config.menuData[i].u == meun) {
 					_config.topMeunData = _config.menuData[i].sub;
-					// console.log('topMeunData', _config.topMeunData);
 					break;
 				}
 			}
 		},
 		menuDataLibrary: [
-
+			{
+				i: "fanew fanew-companysetup-other fanew-companysetup-icon",
+				s: "公司申请",
+				u: "capplicate",
+				power: "0",
+				sub:[{
+					u: "cbase",
+					s: "公司信息"
+				}]
+			},
 			{
 				i: "fanew fanew-companysetup-other fanew-companysetup-icon",
 				s: "公司设定",
@@ -78,7 +87,7 @@
 				power: "1",
 				sub: [{
 						u: "base",
-						s: "公司信息",
+						s: "公司信息"
 					},
 					{
 						u: "user",
@@ -147,13 +156,13 @@
 				i: "fanew fanew-workbench-other fanew-workbench-icon",
 				s: "工作台",
 				u: "control",
-				power: "5",
+				power: "5"
 			},
 			{
 				i: "glyphicon glyphicon-list-alt my-message-icon",
 				s: "我的消息",
 				u: "my",
-				power: "6",
+				power: "6"
 			},
 			{
 				i: "fanew fanew-approval-other fanew-approval-icon",
@@ -186,13 +195,13 @@
 				i: "fanew fanew-task-other fanew-task-icon",
 				s: "台账",
 				u: "report",
-				power: "8",
+				power: "8"
 			},
 			{
 				i: "glyphicon glyphicon-list-alt my-message-icon",
 				s: "体系正文",
 				u: "system",
-				power: "9",
+				power: "9"
 			},
 			{
 				i: "glyphicon glyphicon-copy my-message-icon",
